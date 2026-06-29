@@ -1,3 +1,6 @@
+let allHorses = [];
+let currentLineFilter = "all";
+
 async function loadHorses() {
     try {
         const response = await fetch("data/horses.json");
@@ -8,8 +11,11 @@ async function loadHorses() {
 
         const horses = await response.json();
 
-        updateStats(horses);
-        renderHorseList(horses);
+        allHorses = horses;
+
+        updateStats(allHorses);
+        setupLineFilters();
+        renderHorseList(getFilteredHorses());
     } catch (error) {
         console.error(error);
 
@@ -22,6 +28,33 @@ async function loadHorses() {
             </div>
         `;
     }
+}
+
+function setupLineFilters() {
+    const buttons = document.querySelectorAll("[data-line-filter]");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            currentLineFilter = button.dataset.lineFilter;
+
+            buttons.forEach(item => item.classList.remove("active"));
+            button.classList.add("active");
+
+            renderHorseList(getFilteredHorses());
+        });
+    });
+}
+
+function getFilteredHorses() {
+    if (currentLineFilter === "all") {
+        return allHorses;
+    }
+
+    if (currentLineFilter === "none") {
+        return allHorses.filter(horse => !horse.line);
+    }
+
+    return allHorses.filter(horse => horse.line === currentLineFilter);
 }
 
 function updateStats(horses) {
@@ -39,31 +72,42 @@ function renderHorseList(horses) {
 
     horseList.innerHTML = "";
 
+    if (!horses.length) {
+        horseList.innerHTML = `
+            <article class="profile-card wide">
+                <h2>Лошадей не найдено</h2>
+                <p>В выбранной линии пока нет лошадей.</p>
+            </article>
+        `;
+        return;
+    }
+
     horses.forEach(horse => {
         const card = document.createElement("a");
 
         card.className = "horse-card";
         card.href = `horse.html?id=${horse.id}`;
 
-      card.innerHTML = `
-    <h3>${horse.name}</h3>
-    <p><strong>ID:</strong> <span class="id-code">${horse.id}</span></p>
-    <p><strong>Пол:</strong> ${horse.sex} ${horse.sexSymbol}</p>
-    <p><strong>Порода:</strong> ${horse.breed}</p>
-    <p><strong>Масть:</strong> ${horse.coat}</p>
+        card.innerHTML = `
+            <h3>${horse.name}</h3>
+            <p><strong>ID:</strong> <span class="id-code">${horse.id}</span></p>
+            <p><strong>Пол:</strong> ${horse.sex} ${horse.sexSymbol}</p>
+            <p><strong>Порода:</strong> ${horse.breed}</p>
+            <p><strong>Масть:</strong> ${horse.coat}</p>
 
-    <div class="horse-line-badge">
-        🌳 ${getLineText(horse)}
-    </div>
+            <div class="horse-line-badge">
+                🌳 ${getLineText(horse)}
+            </div>
 
-    <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"}">
-        ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
-    </p>
-`;
+            <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"}">
+                ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
+            </p>
+        `;
 
         horseList.appendChild(card);
     });
 }
+
 function getLineText(horse) {
     if (!horse.line && !horse.lineName) {
         return "Линия не назначена";
@@ -75,4 +119,5 @@ function getLineText(horse) {
 
     return horse.lineName || horse.line || "Линия не назначена";
 }
+
 loadHorses();

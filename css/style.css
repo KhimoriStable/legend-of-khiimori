@@ -1836,4 +1836,66 @@ tr:last-child td {
     color: #f2d89b;
     font-size: 13px;
     font-weight: bold;
+}/* Фильтр по племенным линиям */
+
+.compact-section {
+    margin-top: 22px;
+}
+
+.line-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.line-filter {
+    padding: 9px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(218, 185, 126, 0.26);
+    background: rgba(70, 65, 54, 0.55);
+    color: #d8c397;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.line-filter:hover {
+    color: #f2d89b;
+    border-color: rgba(242, 216, 155, 0.55);
+    background: rgba(92, 82, 63, 0.75);
+}
+
+.line-filter.active {
+    color: #1b1a16;
+    background: #f2d89b;
+    border-color: #f2d89b;
+}
+
+.horse-line-badge {
+    display: inline-block;
+    margin: 8px 0 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(218, 185, 126, 0.26);
+    background: rgba(242, 216, 155, 0.1);
+    color: #f2d89b;
+    font-size: 13px;
+    font-weight: bold;
+}.profile-line-link {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(218, 185, 126, 0.28);
+    background: rgba(242, 216, 155, 0.1);
+    color: #f2d89b;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.profile-line-link:hover {
+    background: rgba(242, 216, 155, 0.18);
+    border-color: rgba(242, 216, 155, 0.55);
+    text-decoration: none;
 }

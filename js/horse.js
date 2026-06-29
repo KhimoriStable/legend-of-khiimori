@@ -1,3 +1,4 @@
+const TREE_HORSES_PER_PAGE = 8;
 async function loadHorseProfile() {
     try {
         const params = new URLSearchParams(window.location.search);
@@ -22,14 +23,14 @@ async function loadHorseProfile() {
             return;
         }
 
-        renderHorseProfile(horse);
+        renderHorseProfile(horses, horse);
     } catch (error) {
         console.error(error);
         showError("Не получилось загрузить данные лошади.");
     }
 }
 
-function renderHorseProfile(horse) {
+function renderHorseProfile(horses, horse) {
     document.title = `${horse.name} — Legend of Khiimori`;
 
     document.getElementById("horse-name").textContent = `🐴 ${horse.name}`;
@@ -51,8 +52,7 @@ function renderHorseProfile(horse) {
                 <tr><th>Масть</th><td>${horse.coat}</td></tr>
                 <tr><th>Рост</th><td>${horse.heightCm} см</td></tr>
                 <tr><th>Вес</th><td>${horse.weightKg} кг</td></tr>
-                <tr><th>Линия</th><td>${getLineText(horse)}</td></tr>
-                <tr><th>Роль</th><td>${horse.lineRole || getFounderText(horse)}</td></tr>
+                <tr><th>Линия</th><td>${getLineLink(horses, horse)}</td></tr>
                 <tr><th>Происхождение</th><td>${getOriginText(horse.origin)}</td></tr>
             </table>
         </article>
@@ -157,6 +157,96 @@ function renderTraits(traits) {
             `).join("")}
         </ul>
     `;
+}
+function getLineLink(horses, horse) {
+    if (!horse.line) {
+        return "Не назначена";
+    }
+
+    const url = getLineUrlForHorse(horses, horse);
+
+    return `
+        <a class="profile-line-link" href="${url}">
+            🌳 ${getLineText(horse)}
+        </a>
+    `;
+}
+
+function getLineUrlForHorse(horses, horse) {
+    const line = encodeURIComponent(horse.line);
+
+    if (isFounderForLine(horse)) {
+        return `tree.html?line=${line}`;
+    }
+
+    const descendants = horses
+        .filter(item => item.line === horse.line && !isFounderForLine(item))
+        .map(item => ({
+            ...item,
+            generation: getGenerationForLine(horses, item, horse.line)
+        }))
+        .sort((a, b) => {
+            if (a.generation !== b.generation) {
+                return a.generation - b.generation;
+            }
+
+            return a.id.localeCompare(b.id);
+        });
+
+    const index = descendants.findIndex(item => item.id === horse.id);
+
+    if (index === -1) {
+        return `tree.html?line=${line}`;
+    }
+
+    const page = Math.floor(index / TREE_HORSES_PER_PAGE) + 1;
+
+    return page > 1
+        ? `tree.html?line=${line}&page=${page}`
+        : `tree.html?line=${line}`;
+}
+
+function getGenerationForLine(horses, horse, lineKey, visited = new Set()) {
+    if (!horse || isFounderForLine(horse)) {
+        return 0;
+    }
+
+    if (visited.has(horse.id)) {
+        return 1;
+    }
+
+    visited.add(horse.id);
+
+    const mother = findHorseById(horses, horse.pedigree?.motherId);
+    const father = findHorseById(horses, horse.pedigree?.fatherId);
+
+    const sameLineParents = [mother, father].filter(parent =>
+        parent && parent.line === lineKey
+    );
+
+    if (!sameLineParents.length) {
+        return 1;
+    }
+
+    const parentGenerations = sameLineParents.map(parent =>
+        getGenerationForLine(horses, parent, lineKey, new Set(visited))
+    );
+
+    return Math.max(...parentGenerations) + 1;
+}
+
+function isFounderForLine(horse) {
+    return horse.founderStatus === "founder" ||
+        (
+            !horse.pedigree?.motherId &&
+            !horse.pedigree?.fatherId &&
+            horse.origin !== "bred"
+        );
+}
+
+function findHorseById(horses, id) {
+    if (!id) return null;
+    return horses.find(horse => horse.id === id) || null;
 }
 function getLineText(horse) {
     if (!horse.line && !horse.lineName) {
