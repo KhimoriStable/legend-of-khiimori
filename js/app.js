@@ -51,7 +51,9 @@ function renderHorseList(horses) {
             <p><strong>Пол:</strong> ${horse.sex} ${horse.sexSymbol}</p>
             <p><strong>Порода:</strong> ${horse.breed}</p>
             <p><strong>Масть:</strong> ${horse.coat}</p>
-            <p class="status-ready">✅ ${horse.statusText}</p>
+            <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"}">
+    ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
+</p>
         `;
 
         horseList.appendChild(card);

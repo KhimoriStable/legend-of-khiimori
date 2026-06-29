@@ -90,6 +90,10 @@ function maxHorseStats(horseId) {
 
     horse.stats.forEach(stat => {
         stat.current = stat.max;
+
+        stat.skills = stat.skills.map(skill => {
+            return skill.replace("*", "");
+        });
     });
 
     setReadyStatus(horse);

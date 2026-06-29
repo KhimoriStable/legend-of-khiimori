@@ -319,4 +319,17 @@ tr:last-child td {
 .site-footer a:hover {
     color: #f2d89b;
     text-decoration: underline;
+}.disclaimer {
+    margin-bottom: 24px;
+    padding: 14px 18px;
+    border: 1px solid rgba(242, 216, 155, 0.35);
+    border-radius: 14px;
+    background: rgba(242, 185, 92, 0.10);
+    color: #e8d6ad;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.disclaimer strong {
+    color: #f2d89b;
 }
