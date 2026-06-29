@@ -12,7 +12,7 @@ body {
     min-height: 100vh;
 }
 
-header {
+.site-header {
     padding: 42px 20px 32px;
     text-align: center;
     border-bottom: 1px solid rgba(218, 185, 126, 0.25);
@@ -20,7 +20,7 @@ header {
         linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.15));
 }
 
-header h1 {
+.site-header h1 {
     margin: 0;
     font-size: 38px;
     letter-spacing: 0.5px;
@@ -28,13 +28,13 @@ header h1 {
     text-shadow: 0 2px 12px rgba(0,0,0,0.65);
 }
 
-header p {
+.site-header p {
     margin: 10px 0 0;
     font-size: 18px;
     color: #c9b58d;
 }
 
-main {
+.page {
     width: min(1180px, 92%);
     margin: 0 auto;
     padding: 34px 0 60px;
@@ -47,8 +47,9 @@ main {
     margin-bottom: 36px;
 }
 
-.card,
-.horse-card {
+.stat-card,
+.horse-card,
+.profile-card {
     background:
         linear-gradient(180deg, rgba(70, 65, 54, 0.95), rgba(39, 37, 32, 0.95));
     border: 1px solid rgba(218, 185, 126, 0.28);
@@ -58,32 +59,41 @@ main {
         inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
-.card {
+.stat-card {
     padding: 22px;
     text-align: center;
 }
 
-.card h2 {
+.stat-card h2 {
     margin: 0 0 12px;
     font-size: 18px;
     color: #f2d89b;
 }
 
-.card p {
+.stat-card p {
     margin: 0;
     font-size: 32px;
     font-weight: bold;
 }
 
-.horses h2 {
+.section-title {
     margin: 0 0 18px;
     font-size: 28px;
     color: #f2d89b;
 }
 
+.horse-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
 .horse-card {
+    display: block;
     width: 310px;
     padding: 22px;
+    color: inherit;
+    text-decoration: none;
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -103,7 +113,8 @@ main {
     color: #ddd0b8;
 }
 
-.horse-card p:last-child {
+.status-ready {
+    display: inline-block;
     margin-top: 14px;
     padding: 10px 12px;
     border-radius: 999px;
@@ -113,8 +124,98 @@ main {
     font-weight: bold;
 }
 
+.status-ready.big {
+    font-size: 18px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #f2d89b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.profile-card {
+    padding: 22px;
+}
+
+.profile-card.wide {
+    grid-column: span 3;
+}
+
+.profile-card h2 {
+    margin: 0 0 18px;
+    font-size: 22px;
+    color: #f2d89b;
+}
+
+.profile-card p {
+    line-height: 1.6;
+    color: #ddd0b8;
+}
+
+.profile-card ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.profile-card li {
+    margin: 8px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+th,
+td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(218, 185, 126, 0.18);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    color: #f2d89b;
+    font-weight: bold;
+    width: 32%;
+}
+
+td {
+    color: #eee6d8;
+}
+
+tr:last-child th,
+tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card.wide {
+        grid-column: span 1;
+    }
+}
+
 @media (max-width: 760px) {
-    header h1 {
+    .site-header h1 {
         font-size: 30px;
     }
 
@@ -125,4 +226,22 @@ main {
     .horse-card {
         width: 100%;
     }
+
+    th,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        padding-bottom: 4px;
+    }
+
+    td {
+        padding-top: 4px;
+    }
+}code,
+.id-code {
+    font-family: Consolas, "Courier New", monospace;
+    letter-spacing: 0.5px;
 }
