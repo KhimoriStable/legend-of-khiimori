@@ -1,47 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #e6e6e6;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, rgba(156, 122, 76, 0.18), transparent 35%),
+        linear-gradient(180deg, #1b1a16 0%, #11110f 100%);
+    color: #eee6d8;
+    min-height: 100vh;
 }
 
 header {
-    background: #111;
-    padding: 20px;
+    padding: 42px 20px 32px;
     text-align: center;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid rgba(218, 185, 126, 0.25);
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.15));
 }
 
 header h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 38px;
+    letter-spacing: 0.5px;
+    color: #f2d89b;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.65);
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 18px;
+    color: #c9b58d;
 }
 
 main {
-    padding: 20px;
+    width: min(1180px, 92%);
+    margin: 0 auto;
+    padding: 34px 0 60px;
 }
 
 .stats {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 36px;
+}
+
+.card,
+.horse-card {
+    background:
+        linear-gradient(180deg, rgba(70, 65, 54, 0.95), rgba(39, 37, 32, 0.95));
+    border: 1px solid rgba(218, 185, 126, 0.28);
+    border-radius: 18px;
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .card {
-    background: #222;
-    padding: 15px;
-    border-radius: 10px;
-    flex: 1;
+    padding: 22px;
     text-align: center;
 }
 
-.horses {
-    margin-top: 20px;
+.card h2 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    color: #f2d89b;
+}
+
+.card p {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.horses h2 {
+    margin: 0 0 18px;
+    font-size: 28px;
+    color: #f2d89b;
 }
 
 .horse-card {
-    background: #222;
-    padding: 15px;
-    border-radius: 10px;
-    width: 250px;
+    width: 310px;
+    padding: 22px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.horse-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(242, 216, 155, 0.65);
+}
+
+.horse-card h3 {
+    margin: 0 0 12px;
+    font-size: 26px;
+    color: #ffffff;
+}
+
+.horse-card p {
+    margin: 8px 0;
+    color: #ddd0b8;
+}
+
+.horse-card p:last-child {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(76, 148, 96, 0.18);
+    border: 1px solid rgba(107, 219, 135, 0.35);
+    color: #baf0c4;
+    font-weight: bold;
+}
+
+@media (max-width: 760px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .horse-card {
+        width: 100%;
+    }
 }
