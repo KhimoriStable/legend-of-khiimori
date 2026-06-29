@@ -244,4 +244,79 @@ tr:last-child td {
 .id-code {
     font-family: Consolas, "Courier New", monospace;
     letter-spacing: 0.5px;
+}.admin-warning {
+    margin-bottom: 28px;
+    border-color: rgba(242, 216, 155, 0.45);
+}
+
+.admin-horse-list {
+    display: grid;
+    gap: 18px;
+}
+
+.admin-card h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.admin-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.admin-card-header p {
+    margin: 0;
+}
+
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.admin-actions button {
+    border: 1px solid rgba(242, 216, 155, 0.45);
+    background: rgba(242, 216, 155, 0.12);
+    color: #f2d89b;
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.admin-actions button:hover {
+    background: rgba(242, 216, 155, 0.22);
+}
+
+.status-not-ready {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(184, 131, 56, 0.18);
+    border: 1px solid rgba(242, 185, 92, 0.35);
+    color: #ffd99a;
+    font-weight: bold;
+}.site-footer {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+    padding: 0 0 32px;
+    text-align: right;
+}
+
+.site-footer a {
+    color: #8f8268;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.site-footer a:hover {
+    color: #f2d89b;
+    text-decoration: underline;
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель — Legend of Khiimori</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>⚙️ Админ-панель</h1>
+        <p>Тестовое управление племенной книгой</p>
+    </header>
+
+    <main class="page">
+
+        <a class="back-link" href="index.html">← Назад к племенной книге</a>
+
+        <section class="profile-card wide admin-warning">
+            <h2>Важно</h2>
+            <p>
+                Это пока тестовая админ-панель. Она меняет данные только на странице,
+                но пока не сохраняет изменения в GitHub навсегда.
+            </p>
+            <p>
+                Позже мы подключим настоящее сохранение в <span class="id-code">data/horses.json</span>.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Лошади</h2>
+
+            <div id="admin-horse-list" class="admin-horse-list">
+                <p>Загрузка лошадей...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
