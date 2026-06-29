@@ -20,36 +20,30 @@
         <section class="stats">
             <div class="stat-card">
                 <h2>Всего лошадей</h2>
-                <p>1</p>
+                <p id="total-horses">0</p>
             </div>
 
             <div class="stat-card">
                 <h2>Готовы к разведению</h2>
-                <p>1</p>
+                <p id="ready-horses">0</p>
             </div>
 
             <div class="stat-card">
                 <h2>Не готовы</h2>
-                <p>0</p>
+                <p id="not-ready-horses">0</p>
             </div>
         </section>
 
         <section class="section">
             <h2 class="section-title">Лошади</h2>
 
-            <div class="horse-list">
-
-                <a class="horse-card" href="horse-havar.html">
-                    <h3>Хавар</h3>
-                    <p><strong>ID:</strong> H001</p>
-                    <p><strong>Порода:</strong> Ферганская</p>
-                    <p class="status-ready">✅ Готов к разведению</p>
-                </a>
-
+            <div id="horse-list" class="horse-list">
+                <p>Загрузка лошадей...</p>
             </div>
         </section>
 
     </main>
 
+    <script src="js/app.js"></script>
 </body>
 </html>
