@@ -51,6 +51,9 @@ function renderHorseProfile(horse) {
                 <tr><th>Масть</th><td>${horse.coat}</td></tr>
                 <tr><th>Рост</th><td>${horse.heightCm} см</td></tr>
                 <tr><th>Вес</th><td>${horse.weightKg} кг</td></tr>
+                <tr><th>Линия</th><td>${getLineText(horse)}</td></tr>
+                <tr><th>Роль</th><td>${horse.lineRole || getFounderText(horse)}</td></tr>
+                <tr><th>Происхождение</th><td>${getOriginText(horse.origin)}</td></tr>
             </table>
         </article>
 
@@ -70,13 +73,13 @@ function renderHorseProfile(horse) {
         <article class="profile-card">
             <h2>🧠 Черты характера</h2>
 
-            ${renderList(horse.traits)}
+            ${renderTraits(horse.traits)}
         </article>
 
-        <article class="profile-card wide">
+        <article class="profile-card two-thirds">
             <h2>📊 Характеристики и навыки</h2>
 
-            <table>
+            <table class="compact-table stats-table">
                 <tr>
                     <th>Характеристика</th>
                     <th>Значение</th>
@@ -93,28 +96,27 @@ function renderHorseProfile(horse) {
             </table>
         </article>
 
-        <article class="profile-card wide">
+        <article class="profile-card one-third">
             <h2>🧬 Генетика</h2>
 
-            <table>
-                <tr><th>Ген</th><th>Значение</th></tr>
-                <tr><td>Фенотип</td><td>${horse.genetics.phenotype}</td></tr>
+            <p class="genetics-phenotype">
+                <strong>Фенотип:</strong> ${horse.genetics.phenotype}
+            </p>
 
+            <div class="gene-grid">
                 ${horse.genetics.genes.map(gene => `
-                    <tr>
-                        <td>${gene.name}</td>
-                        <td>${gene.value}</td>
-                    </tr>
+                    <span class="gene-pill">
+                        <strong>${gene.name}</strong>
+                        ${gene.value}
+                    </span>
                 `).join("")}
-            </table>
+            </div>
         </article>
 
-        <article class="profile-card wide">
+        <article class="profile-card two-thirds">
             <h2>⚙️ Подробные параметры</h2>
 
-            <table>
-                <tr><th>Параметр</th><th>Значение</th></tr>
-
+            <table class="compact-table readable-params">
                 ${horse.parameters.map(parameter => `
                     <tr>
                         <td>${parameter.name}</td>
@@ -124,28 +126,89 @@ function renderHorseProfile(horse) {
             </table>
         </article>
 
-        <article class="profile-card wide">
-            <h2>🌳 Родословная</h2>
+ <article class="profile-card one-third">
+    <h2>🌳 Родословная</h2>
 
-            <table>
-                <tr><th>Мать</th><td>${horse.pedigree.motherId || "Неизвестно"}</td></tr>
-                <tr><th>Отец</th><td>${horse.pedigree.fatherId || "Неизвестно"}</td></tr>
-                <tr><th>Заметки</th><td>${horse.pedigree.notes || "—"}</td></tr>
-            </table>
-        </article>
+    <table class="compact-table">
+        <tr><th>Мать</th><td>${horse.pedigree.motherId || "Неизвестно"}</td></tr>
+        <tr><th>Отец</th><td>${horse.pedigree.fatherId || "Неизвестно"}</td></tr>
+        <tr><th>Заметки</th><td>${horse.pedigree.notes || "—"}</td></tr>
+    </table>
+
+    <a class="pedigree-button" href="pedigree.html?id=${horse.id}">
+        🌳 Открыть древо
+    </a>
+</article>
     `;
 }
 
-function renderList(items) {
-    if (!items || items.length === 0) {
+function renderTraits(traits) {
+    if (!traits || traits.length === 0) {
         return "<p>Нет данных.</p>";
     }
 
     return `
-        <ul>
-            ${items.map(item => `<li>${item}</li>`).join("")}
+        <ul class="trait-list">
+            ${traits.map(trait => `
+                <li>
+                    <strong>${trait}</strong>
+                    <span>${getTraitDescription(trait)}</span>
+                </li>
+            `).join("")}
         </ul>
     `;
+}
+function getLineText(horse) {
+    if (!horse.line && !horse.lineName) {
+        return "Не назначена";
+    }
+
+    if (horse.line && horse.lineName) {
+        return `${horse.line} — ${horse.lineName}`;
+    }
+
+    return horse.lineName || horse.line || "Не назначена";
+}
+
+function getFounderText(horse) {
+    if (horse.founderStatus === "founder") {
+        return horse.sex === "Кобыла" ? "Основательница" : "Основатель";
+    }
+
+    if (horse.founderStatus === "descendant") {
+        return "Потомок";
+    }
+
+    if (horse.line && horse.line.includes("×")) {
+        return "Межлинейный кросс";
+    }
+
+    return "Не указана";
+}
+
+function getOriginText(origin) {
+    const origins = {
+        "starter": "Стартовая лошадь",
+        "trader": "Куплена у торговца",
+        "wild": "Приручена в дикой природе",
+        "bred": "Рождена в конюшне"
+    };
+
+    return origins[origin] || "Не указано";
+}
+function getTraitDescription(trait) {
+    const descriptions = {
+        "Страсть к карьеру": "Набирает бодрость при карьере.",
+        "Мерзлявость": "Теряет бодрость в холод.",
+        "Вьючная лошадь": "Набирает бодрость при перегрузе.",
+        "Метеочувствительность": "Теряет бодрость в дождь.",
+        "Трусость": "Быстрее теряет бодрость, когда пугается.",
+        "Игривый нрав": "Набирает бодрость рядом с кроликами.",
+        "Раздражительность от голода": "Теряет бодрость, когда хочет есть.",
+        "Ночной образ жизни": "Набирает бодрость ночью."
+    };
+
+    return descriptions[trait] || "Описание пока не добавлено.";
 }
 
 function showError(message) {

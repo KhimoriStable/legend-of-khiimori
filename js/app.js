@@ -45,19 +45,34 @@ function renderHorseList(horses) {
         card.className = "horse-card";
         card.href = `horse.html?id=${horse.id}`;
 
-        card.innerHTML = `
-            <h3>${horse.name}</h3>
-            <p><strong>ID:</strong> <span class="id-code">${horse.id}</span></p>
-            <p><strong>Пол:</strong> ${horse.sex} ${horse.sexSymbol}</p>
-            <p><strong>Порода:</strong> ${horse.breed}</p>
-            <p><strong>Масть:</strong> ${horse.coat}</p>
-            <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"}">
-    ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
-</p>
-        `;
+      card.innerHTML = `
+    <h3>${horse.name}</h3>
+    <p><strong>ID:</strong> <span class="id-code">${horse.id}</span></p>
+    <p><strong>Пол:</strong> ${horse.sex} ${horse.sexSymbol}</p>
+    <p><strong>Порода:</strong> ${horse.breed}</p>
+    <p><strong>Масть:</strong> ${horse.coat}</p>
+
+    <div class="horse-line-badge">
+        🌳 ${getLineText(horse)}
+    </div>
+
+    <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"}">
+        ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
+    </p>
+`;
 
         horseList.appendChild(card);
     });
 }
+function getLineText(horse) {
+    if (!horse.line && !horse.lineName) {
+        return "Линия не назначена";
+    }
 
+    if (horse.line && horse.lineName) {
+        return `${horse.line} — ${horse.lineName}`;
+    }
+
+    return horse.lineName || horse.line || "Линия не назначена";
+}
 loadHorses();

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Родословная — Legend of Khiimori</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1 id="pedigree-title">🌳 Родословная</h1>
+        <p id="pedigree-subtitle">Загрузка древа...</p>
+    </header>
+
+    <nav class="site-nav">
+        <a class="nav-link" href="index.html">Лошади</a>
+        <a class="nav-link" href="tree.html">Древо</a>
+        <a class="nav-link disabled" href="#">Справочник</a>
+        <a class="nav-link disabled" href="#">Летопись</a>
+    </nav>
+
+    <main class="page">
+
+        <section class="disclaimer">
+            <strong>🌳 Родословная:</strong>
+            эта схема строится автоматически по ID родителей. Нажимай на известных предков, чтобы открыть их карточку.
+        </section>
+
+        <a class="back-link" id="back-to-horse" href="index.html">← Назад к лошади</a>
+
+        <section class="section">
+            <h2 class="section-title">Линия предков</h2>
+
+            <div id="pedigree-tree" class="pedigree-tree">
+                <p>Загрузка...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p class="fan-disclaimer">
+            Неофициальный фанатский сайт. Не связан с разработчиками или издателями Legend of Khiimori.
+            Создан для удобного ведения племенной книги и игрового планирования.
+        </p>
+    </footer>
+
+    <script src="js/pedigree.js"></script>
+</body>
+</html>

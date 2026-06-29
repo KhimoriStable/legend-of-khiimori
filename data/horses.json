@@ -8,6 +8,11 @@
         "coat": "Янтарно-саврасая",
         "status": "ready",
         "statusText": "Готов к разведению",
+        "origin": "starter",
+"founderStatus": "founder",
+"line": "A",
+"lineName": "Линия Хавара",
+"lineRole": "Основатель",
         "heightCm": 157,
         "weightKg": 540,
 
@@ -102,6 +107,11 @@
         "coat": "Янтарно-саврасая",
         "status": "not-ready",
         "statusText": "Не готова к разведению",
+        "origin": "trader",
+"founderStatus": "founder",
+"line": "C",
+"lineName": "Линия Нандын",
+"lineRole": "Основательница",
         "heightCm": 160,
         "weightKg": 585,
 
