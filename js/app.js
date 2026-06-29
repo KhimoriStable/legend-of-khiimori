@@ -43,7 +43,7 @@ function renderHorseList(horses) {
         const card = document.createElement("a");
 
         card.className = "horse-card";
-        card.href = `horse-havar.html`;
+        card.href = `horse.html?id=${horse.id}`;
 
         card.innerHTML = `
             <h3>${horse.name}</h3>
