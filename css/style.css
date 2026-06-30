@@ -1897,5 +1897,164 @@ tr:last-child td {
 .profile-line-link:hover {
     background: rgba(242, 216, 155, 0.18);
     border-color: rgba(242, 216, 155, 0.55);
-    text-decoration: none;
+    text-decoration: none;}
+/* ===== Игровой фон главной страницы — читаемая версия ===== */
+
+body.home {
+    background-image: url("assets/images/bg-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    isolation: isolate;
+}
+
+/* сильное затемнение фона */
+body.home::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.78)),
+        radial-gradient(circle at 20% 8%, rgba(242, 216, 155, 0.18), transparent 32%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* лёгкий туман, но НЕ белая пелена */
+body.home::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 25% 70%, rgba(242, 216, 155, 0.08), transparent 34%),
+        radial-gradient(ellipse at 75% 55%, rgba(180, 200, 210, 0.05), transparent 36%);
+    filter: blur(12px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+body.home > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* шапка темнее */
+body.home .site-header {
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.42));
+}
+
+/* заголовок читаемый */
+body.home .site-header h1 {
+    color: #ffe4a6;
+    text-shadow:
+        0 0 10px rgba(242, 216, 155, 0.65),
+        0 0 28px rgba(242, 216, 155, 0.35),
+        0 4px 18px rgba(0, 0, 0, 0.95);
+}
+
+body.home .site-header p {
+    color: #f2d89b;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* предупреждение темнее */
+body.home .disclaimer {
+    background: rgba(42, 36, 26, 0.88);
+    border-color: rgba(242, 216, 155, 0.42);
+    color: #f3e4c1;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+}
+
+/* карточки плотнее и читаемее */
+body.home .stat-card,
+body.home .horse-card,
+body.home .profile-card {
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.96), rgba(22, 21, 18, 0.96));
+    border-color: rgba(242, 216, 155, 0.34);
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+}
+
+/* заголовки секций */
+body.home .section-title {
+    color: #ffe4a6;
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.95),
+        0 0 14px rgba(242, 216, 155, 0.35);
+}
+
+/* текст на карточках */
+body.home .horse-card h3,
+body.home .stat-card p {
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.85);
+}
+
+body.home .horse-card p {
+    color: #f0e4cf;
+}
+
+/* кнопки фильтра чуть контрастнее */
+body.home .line-filter,
+body.home .nav-link {
+    background: rgba(42, 37, 29, 0.86);
+    color: #f2d89b;
+    border-color: rgba(242, 216, 155, 0.38);
+}
+
+body.home .line-filter.active,
+body.home .nav-link.active {
+    background: #f2d89b;
+    color: #171510;
+}
+
+/* анимация появления */
+body.home .disclaimer,
+body.home .stat-card,
+body.home .section-title,
+body.home .line-filter,
+body.home .horse-card {
+    animation: khiimoriFadeUp 0.7s ease both;
+}
+
+body.home .stat-card:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+body.home .stat-card:nth-child(3) {
+    animation-delay: 0.16s;
+}
+
+body.home .horse-card:nth-child(1) {
+    animation-delay: 0.12s;
+}
+
+body.home .horse-card:nth-child(2) {
+    animation-delay: 0.18s;
+}
+
+body.home .horse-card:nth-child(3) {
+    animation-delay: 0.24s;
+}
+
+body.home .horse-card:nth-child(4) {
+    animation-delay: 0.30s;
+}
+
+@keyframes khiimoriFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
