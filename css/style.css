@@ -3275,4 +3275,222 @@ body.inner-bg .main-nav {
     .assessment-meta-grid {
         grid-template-columns: 1fr;
     }
+}/* ===== Игровая карта племенных линий ===== */
+
+.tree-dashboard {
+    position: relative;
+}
+
+.line-overview-grid {
+    align-items: stretch;
+}
+
+.line-overview-card,
+.cross-overview-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.line-overview-card::before,
+.cross-overview-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 14%, rgba(242, 216, 155, 0.14), transparent 34%),
+        radial-gradient(circle at 90% 18%, rgba(154, 199, 143, 0.08), transparent 32%);
+    pointer-events: none;
+}
+
+.line-overview-card::after {
+    content: "Племенная линия";
+    position: absolute;
+    right: -10px;
+    bottom: 10px;
+    color: rgba(242, 216, 155, 0.06);
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.line-overview-card > *,
+.cross-overview-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.line-overview-card:hover,
+.cross-overview-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(242, 216, 155, 0.62);
+    box-shadow:
+        0 26px 62px rgba(0, 0, 0, 0.72),
+        0 0 24px rgba(242, 216, 155, 0.14);
+}
+
+.line-overview-header h3 {
+    color: #ffe4a6;
+    text-shadow:
+        0 0 12px rgba(242, 216, 155, 0.32),
+        0 4px 16px rgba(0, 0, 0, 0.9);
+}
+
+.line-overview-header p,
+.line-overview-header span {
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
+}
+
+.line-overview-founders {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(242, 216, 155, 0.22);
+    background: rgba(17, 15, 12, 0.62);
+}
+
+.line-overview-founders strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #f2d89b;
+}
+
+.line-overview-founders a,
+.line-overview-founders span {
+    display: inline-flex;
+    margin: 4px 6px 0 0;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.28);
+    background: rgba(242, 216, 155, 0.08);
+    color: #f0e4cf;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.line-overview-founders a:hover {
+    color: #ffe4a6;
+    border-color: rgba(242, 216, 155, 0.55);
+    background: rgba(242, 216, 155, 0.14);
+}
+
+.line-overview-stats {
+    margin-top: 18px;
+}
+
+.line-overview-stats div {
+    border-radius: 18px;
+    background:
+        linear-gradient(180deg, rgba(242, 216, 155, 0.12), rgba(17, 15, 12, 0.62));
+    border: 1px solid rgba(242, 216, 155, 0.20);
+}
+
+.line-overview-stats strong,
+.overview-big-number {
+    color: #ffe4a6;
+    text-shadow:
+        0 0 12px rgba(242, 216, 155, 0.25),
+        0 4px 14px rgba(0, 0, 0, 0.9);
+}
+
+.tree-open-link {
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.38);
+    background: rgba(28, 25, 19, 0.86);
+    color: #f2d89b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.tree-open-link:hover {
+    background: rgba(242, 216, 155, 0.16);
+    border-color: rgba(242, 216, 155, 0.62);
+}
+
+/* страница отдельной линии */
+.line-tree-page {
+    position: relative;
+}
+
+.line-page-header {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(242, 216, 155, 0.42);
+    background:
+        linear-gradient(135deg, rgba(49, 45, 37, 0.96), rgba(20, 18, 14, 0.96)),
+        radial-gradient(circle at 18% 18%, rgba(242, 216, 155, 0.16), transparent 35%);
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.62),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.line-page-header::after {
+    content: "Line";
+    position: absolute;
+    right: 22px;
+    bottom: -12px;
+    color: rgba(242, 216, 155, 0.07);
+    font-family: Georgia, serif;
+    font-size: 88px;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.line-page-header h2 {
+    color: #ffe4a6;
+    text-shadow:
+        0 0 14px rgba(242, 216, 155, 0.38),
+        0 5px 18px rgba(0, 0, 0, 0.9);
+}
+
+.line-founders-block,
+.line-descendants-block {
+    border: 1px solid rgba(242, 216, 155, 0.28);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.92), rgba(22, 21, 18, 0.92));
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.50),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.line-founders-block h3,
+.line-descendants-header h3,
+.generation-page-block h4 {
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(242, 216, 155, 0.22);
+}
+
+.tree-horse-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.tree-horse-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 15%, rgba(242, 216, 155, 0.10), transparent 34%);
+    pointer-events: none;
+}
+
+.tree-horse-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.tree-card-name {
+    color: #ffe4a6;
+    font-family: Georgia, serif;
 }
