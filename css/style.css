@@ -3494,3 +3494,150 @@ body.inner-bg .main-nav {
     color: #ffe4a6;
     font-family: Georgia, serif;
 }
+/* ===== Игровое древо родословной ===== */
+
+.pedigree-tree {
+    position: relative;
+    margin-top: 18px;
+    padding: 34px 22px 24px;
+    border-radius: 28px;
+    border: 1px solid rgba(242, 216, 155, 0.34);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.94), rgba(20, 18, 14, 0.94)),
+        radial-gradient(circle at 50% 10%, rgba(242, 216, 155, 0.12), transparent 36%);
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.62),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    overflow-x: auto;
+}
+
+.pedigree-tree::before {
+    content: "Bloodline";
+    position: absolute;
+    right: 18px;
+    bottom: 8px;
+    color: rgba(242, 216, 155, 0.055);
+    font-family: Georgia, serif;
+    font-size: 74px;
+    font-weight: bold;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.pedigree-tree > * {
+    position: relative;
+    z-index: 2;
+}
+
+.pedigree-generation {
+    gap: 18px;
+}
+
+.pedigree-horse {
+    position: relative;
+    overflow: hidden;
+    padding: 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(242, 216, 155, 0.30);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.96), rgba(22, 21, 18, 0.96));
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.48),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.pedigree-horse::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 14%, rgba(242, 216, 155, 0.12), transparent 36%);
+    pointer-events: none;
+}
+
+.pedigree-horse > * {
+    position: relative;
+    z-index: 2;
+}
+
+.pedigree-horse:hover {
+    transform: translateY(-3px);
+    border-color: rgba(242, 216, 155, 0.68);
+    box-shadow:
+        0 22px 46px rgba(0, 0, 0, 0.62),
+        0 0 20px rgba(242, 216, 155, 0.12);
+}
+
+.pedigree-horse.current {
+    border-color: rgba(154, 199, 143, 0.70);
+    background:
+        linear-gradient(180deg, rgba(38, 57, 36, 0.96), rgba(20, 18, 14, 0.96));
+    box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.62),
+        0 0 24px rgba(154, 199, 143, 0.18);
+}
+
+.pedigree-horse.current .pedigree-name {
+    color: #c9ffcb;
+}
+
+.pedigree-horse.unknown {
+    opacity: 0.68;
+    border-style: dashed;
+    background:
+        linear-gradient(180deg, rgba(39, 36, 30, 0.78), rgba(17, 15, 12, 0.78));
+}
+
+.pedigree-label {
+    color: #b9a987;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.pedigree-name {
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    text-shadow:
+        0 0 12px rgba(242, 216, 155, 0.24),
+        0 4px 14px rgba(0, 0, 0, 0.9);
+}
+
+.pedigree-meta {
+    color: #f0e4cf;
+}
+
+.pedigree-meta span,
+.pedigree-meta div {
+    line-height: 1.35;
+}
+
+.pedigree-lines span::before,
+.pedigree-lines-top span::after {
+    background: rgba(242, 216, 155, 0.52);
+    box-shadow: 0 0 10px rgba(242, 216, 155, 0.18);
+}
+
+.pedigree-tree::-webkit-scrollbar {
+    height: 10px;
+}
+
+.pedigree-tree::-webkit-scrollbar-track {
+    background: rgba(17, 15, 12, 0.75);
+    border-radius: 999px;
+}
+
+.pedigree-tree::-webkit-scrollbar-thumb {
+    background: rgba(242, 216, 155, 0.38);
+    border-radius: 999px;
+}
+
+.pedigree-tree::-webkit-scrollbar-thumb:hover {
+    background: rgba(242, 216, 155, 0.58);
+}
