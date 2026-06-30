@@ -59,4 +59,12 @@
   "tag": "Справочник",
   "important": true
 }
+,
+{
+  "date": "Текущий этап",
+  "title": "Добавлены ссылки на внешние вики",
+  "text": "В справочник добавлен блок «Внешние источники» с двумя ссылками: Khiimori Wiki.gg и Legend of Khiimori Fandom.",
+  "tag": "Справочник",
+  "important": false
+}
 ]
