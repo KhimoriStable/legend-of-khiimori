@@ -2514,4 +2514,64 @@ body.inner-bg .main-nav {
 .reference-back-link:hover {
     background: rgba(242, 216, 155, 0.16);
     border-color: rgba(242, 216, 155, 0.55);
+}/* ===== Внешние источники справочника ===== */
+
+.wiki-links-section {
+    margin-top: 12px;
+}
+
+.wiki-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.wiki-link-card {
+    display: block;
+    padding: 24px;
+    border-radius: 22px;
+    border: 1px solid rgba(242, 216, 155, 0.34);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.96), rgba(22, 21, 18, 0.96));
+    color: #f0e4cf;
+    text-decoration: none;
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.wiki-link-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(242, 216, 155, 0.62);
+    box-shadow:
+        0 24px 52px rgba(0, 0, 0, 0.68),
+        0 0 20px rgba(242, 216, 155, 0.12);
+}
+
+.wiki-link-card h3 {
+    margin: 0 0 12px;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.wiki-link-card p {
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+
+.wiki-link-card span {
+    display: inline-block;
+    color: #f2d89b;
+    font-weight: bold;
+}
+
+@media (max-width: 760px) {
+    .wiki-links-grid {
+        grid-template-columns: 1fr;
+    }
 }
