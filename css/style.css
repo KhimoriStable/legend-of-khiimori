@@ -2461,4 +2461,57 @@ body.inner-bg .main-nav {
     .reference-grid {
         grid-template-columns: 1fr;
     }
+}/* ===== Кликабельные разделы справочника ===== */
+
+.reference-index-grid {
+    align-items: stretch;
+}
+
+.reference-section-link {
+    display: block;
+    text-decoration: none;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+}
+
+.reference-section-link:hover {
+    transform: translateY(-3px);
+    border-color: rgba(242, 216, 155, 0.62);
+    background:
+        linear-gradient(180deg, rgba(62, 54, 39, 0.98), rgba(24, 22, 18, 0.98));
+    box-shadow:
+        0 24px 52px rgba(0, 0, 0, 0.68),
+        0 0 20px rgba(242, 216, 155, 0.12);
+}
+
+.reference-open-link {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.34);
+    background: rgba(242, 216, 155, 0.10);
+    color: #f2d89b;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.reference-back-link {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 9px 15px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.34);
+    background: rgba(28, 25, 19, 0.82);
+    color: #f2d89b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.reference-back-link:hover {
+    background: rgba(242, 216, 155, 0.16);
+    border-color: rgba(242, 216, 155, 0.55);
 }
