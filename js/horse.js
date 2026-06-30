@@ -1,4 +1,5 @@
 const TREE_HORSES_PER_PAGE = 8;
+
 async function loadHorseProfile() {
     try {
         const params = new URLSearchParams(window.location.search);
@@ -46,12 +47,12 @@ function renderHorseProfile(horses, horse) {
 
             <table>
                 <tr><th>ID</th><td><span class="id-code">${horse.id}</span></td></tr>
-                <tr><th>Имя</th><td>${horse.name}</td></tr>
-                <tr><th>Пол</th><td>${horse.sex} ${horse.sexSymbol}</td></tr>
-                <tr><th>Порода</th><td>${horse.breed}</td></tr>
-                <tr><th>Масть</th><td>${horse.coat}</td></tr>
-                <tr><th>Рост</th><td>${horse.heightCm} см</td></tr>
-                <tr><th>Вес</th><td>${horse.weightKg} кг</td></tr>
+                <tr><th>Имя</th><td>${horse.name || "—"}</td></tr>
+                <tr><th>Пол</th><td>${horse.sex || "—"} ${horse.sexSymbol || ""}</td></tr>
+                <tr><th>Порода</th><td>${horse.breed || "—"}</td></tr>
+                <tr><th>Масть</th><td>${horse.coat || "—"}</td></tr>
+                <tr><th>Рост</th><td>${horse.heightCm ? horse.heightCm + " см" : "—"}</td></tr>
+                <tr><th>Вес</th><td>${horse.weightKg ? horse.weightKg + " кг" : "—"}</td></tr>
                 <tr><th>Линия</th><td>${getLineLink(horses, horse)}</td></tr>
                 <tr><th>Происхождение</th><td>${getOriginText(horse.origin)}</td></tr>
             </table>
@@ -61,7 +62,7 @@ function renderHorseProfile(horses, horse) {
             <h2>❤️ Статус разведения</h2>
 
             <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"} big">
-                ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
+                ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText || "Статус не указан"}
             </p>
 
             <p>${horse.status === "ready"
@@ -71,8 +72,12 @@ function renderHorseProfile(horses, horse) {
         </article>
 
         <article class="profile-card">
-            <h2>🧠 Черты характера</h2>
+            <h2>🐴 Племенная программа</h2>
+            ${renderProgram(horses, horse)}
+        </article>
 
+        <article class="profile-card">
+            <h2>🧠 Черты характера</h2>
             ${renderTraits(horse.traits)}
         </article>
 
@@ -86,59 +91,46 @@ function renderHorseProfile(horses, horse) {
                     <th>Навыки</th>
                 </tr>
 
-                ${horse.stats.map(stat => `
-                    <tr>
-                        <td>${stat.name}</td>
-                        <td>${stat.current} / ${stat.max}</td>
-                        <td>${stat.skills.length ? stat.skills.join(", ") : "—"}</td>
-                    </tr>
-                `).join("")}
+                ${renderStats(horse.stats)}
             </table>
         </article>
 
         <article class="profile-card one-third">
             <h2>🧬 Генетика</h2>
-
-            <p class="genetics-phenotype">
-                <strong>Фенотип:</strong> ${horse.genetics.phenotype}
-            </p>
-
-            <div class="gene-grid">
-                ${horse.genetics.genes.map(gene => `
-                    <span class="gene-pill">
-                        <strong>${gene.name}</strong>
-                        ${gene.value}
-                    </span>
-                `).join("")}
-            </div>
+            ${renderGenetics(horse.genetics)}
         </article>
 
         <article class="profile-card two-thirds">
             <h2>⚙️ Подробные параметры</h2>
-
-            <table class="compact-table readable-params">
-                ${horse.parameters.map(parameter => `
-                    <tr>
-                        <td>${parameter.name}</td>
-                        <td>${parameter.value}</td>
-                    </tr>
-                `).join("")}
-            </table>
+            ${renderParameters(horse.parameters)}
         </article>
 
- <article class="profile-card one-third">
-    <h2>🌳 Родословная</h2>
+        <article class="profile-card one-third">
+            <h2>🌳 Родословная</h2>
+            ${renderPedigree(horse)}
 
-    <table class="compact-table">
-        <tr><th>Мать</th><td>${horse.pedigree.motherId || "Неизвестно"}</td></tr>
-        <tr><th>Отец</th><td>${horse.pedigree.fatherId || "Неизвестно"}</td></tr>
-        <tr><th>Заметки</th><td>${horse.pedigree.notes || "—"}</td></tr>
-    </table>
+            <a class="pedigree-button" href="pedigree.html?id=${horse.id}">
+                🌳 Открыть древо
+            </a>
+        </article>
+    `;
+}
 
-    <a class="pedigree-button" href="pedigree.html?id=${horse.id}">
-        🌳 Открыть древо
-    </a>
-</article>
+function renderProgram(horses, horse) {
+    const program = horse.program || {};
+
+    const lineFullName = program.lineFullName || horse.lineName || "Не назначена";
+    const role = program.role || horse.lineRole || getFounderText(horse);
+    const direction = program.direction || "Не указано";
+    const partner = program.partner || getPartnerName(horses, horse) || "Не указана";
+
+    return `
+        <table class="compact-table">
+            <tr><th>Линия</th><td>${lineFullName}</td></tr>
+            <tr><th>Роль</th><td>${role}</td></tr>
+            <tr><th>Направление</th><td>${direction}</td></tr>
+            <tr><th>Пара</th><td>${partner}</td></tr>
+        </table>
     `;
 }
 
@@ -158,6 +150,77 @@ function renderTraits(traits) {
         </ul>
     `;
 }
+
+function renderStats(stats) {
+    if (!stats || stats.length === 0) {
+        return `
+            <tr>
+                <td colspan="3">Нет данных.</td>
+            </tr>
+        `;
+    }
+
+    return stats.map(stat => `
+        <tr>
+            <td>${stat.name || "—"}</td>
+            <td>${stat.current ?? "—"} / ${stat.max ?? "—"}</td>
+            <td>${stat.skills && stat.skills.length ? stat.skills.join(", ") : "—"}</td>
+        </tr>
+    `).join("");
+}
+
+function renderGenetics(genetics) {
+    if (!genetics) {
+        return "<p>Нет данных.</p>";
+    }
+
+    const genes = genetics.genes || [];
+
+    return `
+        <p class="genetics-phenotype">
+            <strong>Фенотип:</strong> ${genetics.phenotype || "—"}
+        </p>
+
+        <div class="gene-grid">
+            ${genes.length ? genes.map(gene => `
+                <span class="gene-pill">
+                    <strong>${gene.name}</strong>
+                    ${gene.value}
+                </span>
+            `).join("") : "<p>Гены не указаны.</p>"}
+        </div>
+    `;
+}
+
+function renderParameters(parameters) {
+    if (!parameters || parameters.length === 0) {
+        return "<p>Нет данных.</p>";
+    }
+
+    return `
+        <table class="compact-table readable-params">
+            ${parameters.map(parameter => `
+                <tr>
+                    <td>${parameter.name}</td>
+                    <td>${parameter.value}</td>
+                </tr>
+            `).join("")}
+        </table>
+    `;
+}
+
+function renderPedigree(horse) {
+    const pedigree = horse.pedigree || {};
+
+    return `
+        <table class="compact-table">
+            <tr><th>Мать</th><td>${pedigree.motherId || "Неизвестно"}</td></tr>
+            <tr><th>Отец</th><td>${pedigree.fatherId || "Неизвестно"}</td></tr>
+            <tr><th>Заметки</th><td>${pedigree.notes || "—"}</td></tr>
+        </table>
+    `;
+}
+
 function getLineLink(horses, horse) {
     if (!horse.line) {
         return "Не назначена";
@@ -248,6 +311,7 @@ function findHorseById(horses, id) {
     if (!id) return null;
     return horses.find(horse => horse.id === id) || null;
 }
+
 function getLineText(horse) {
     if (!horse.line && !horse.lineName) {
         return "Не назначена";
@@ -276,6 +340,20 @@ function getFounderText(horse) {
     return "Не указана";
 }
 
+function getPartnerName(horses, horse) {
+    if (!horse.line) {
+        return null;
+    }
+
+    const partner = horses.find(item =>
+        item.id !== horse.id &&
+        item.line === horse.line &&
+        item.founderStatus === "founder"
+    );
+
+    return partner ? partner.name : null;
+}
+
 function getOriginText(origin) {
     const origins = {
         "starter": "Стартовая лошадь",
@@ -286,6 +364,7 @@ function getOriginText(origin) {
 
     return origins[origin] || "Не указано";
 }
+
 function getTraitDescription(trait) {
     const descriptions = {
         "Страсть к карьеру": "Набирает бодрость при карьере.",
@@ -295,7 +374,12 @@ function getTraitDescription(trait) {
         "Трусость": "Быстрее теряет бодрость, когда пугается.",
         "Игривый нрав": "Набирает бодрость рядом с кроликами.",
         "Раздражительность от голода": "Теряет бодрость, когда хочет есть.",
-        "Ночной образ жизни": "Набирает бодрость ночью."
+        "Ночной образ жизни": "Набирает бодрость ночью.",
+        "Ветреность": "Набирает бодрость в сильный ветер.",
+        "Храбрость": "Набирает бодрость, когда пугается.",
+        "Зимняя шкура": "Набирает бодрость в холод.",
+        "Избирательность в еде": "Меньше ест.",
+        "Нелюбовь к ветру": "Теряет бодрость в сильный ветер."
     };
 
     return descriptions[trait] || "Описание пока не добавлено.";
