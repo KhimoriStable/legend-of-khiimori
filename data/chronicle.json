@@ -170,4 +170,12 @@
   "tag": "Справочник",
   "important": false
 }
+,
+{
+  "date": "Текущий этап",
+  "title": "Добавлена страница проверки данных",
+  "text": "В проект добавлена техническая страница check.html, которая проверяет загрузку и структуру файлов horses.json, reference.json и chronicle.json.",
+  "tag": "Сайт",
+  "important": true
+}
 ]
