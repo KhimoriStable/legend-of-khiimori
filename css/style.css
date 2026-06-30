@@ -2057,4 +2057,96 @@ body.home .horse-card:nth-child(4) {
         opacity: 1;
         transform: translateY(0);
     }
+}/* ===== Игровой фон внутренних страниц ===== */
+
+body.inner-bg {
+    background-image: url("assets/images/bg-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    isolation: isolate;
+}
+
+/* затемнение для читаемости внутренних страниц */
+body.inner-bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.84)),
+        radial-gradient(circle at 70% 12%, rgba(242, 216, 155, 0.12), transparent 30%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* лёгкий туман, но слабее чем на главной */
+body.inner-bg::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 65%, rgba(242, 216, 155, 0.05), transparent 34%),
+        radial-gradient(ellipse at 80% 40%, rgba(180, 200, 210, 0.04), transparent 36%);
+    filter: blur(12px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* весь интерфейс поверх фона */
+body.inner-bg > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* шапка внутренних страниц */
+body.inner-bg .site-header {
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.48));
+}
+
+body.inner-bg .site-header h1 {
+    color: #ffe4a6;
+    text-shadow:
+        0 0 10px rgba(242, 216, 155, 0.55),
+        0 0 26px rgba(242, 216, 155, 0.28),
+        0 4px 18px rgba(0, 0, 0, 0.95);
+}
+
+body.inner-bg .site-header p {
+    color: #f2d89b;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* карточки внутренних страниц */
+body.inner-bg .profile-card,
+body.inner-bg .stat-card,
+body.inner-bg .horse-card,
+body.inner-bg .line-overview-card,
+body.inner-bg .cross-overview-card,
+body.inner-bg .tree-horse-card,
+body.inner-bg .pedigree-horse {
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.97), rgba(22, 21, 18, 0.97));
+    border-color: rgba(242, 216, 155, 0.34);
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+}
+
+/* предупреждения и панели */
+body.inner-bg .disclaimer {
+    background: rgba(42, 36, 26, 0.90);
+    border-color: rgba(242, 216, 155, 0.42);
+    color: #f3e4c1;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+}
+
+body.inner-bg .section-title {
+    color: #ffe4a6;
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.95),
+        0 0 14px rgba(242, 216, 155, 0.35);
 }
