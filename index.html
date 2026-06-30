@@ -10,20 +10,29 @@
 
 <body class="home">
 
-    <header class="site-header">
-        <h1>🐴 Legend of Khiimori</h1>
-        <p>Электронная племенная книга</p>
-    </header>
-
-    <nav class="site-nav">
-        <a class="nav-link active" href="index.html">Лошади</a>
-        <a class="nav-link" href="tree.html">Древо</a>
-        <a class="nav-link disabled" href="#">Справочник</a>
-        <a class="nav-link disabled" href="#">Летопись</a>
-    </nav>
-
     <main class="page">
+<section class="game-menu">
+    <div class="game-menu-content">
+        <p class="game-menu-kicker">Электронная племенная книга</p>
 
+        <h1 class="game-menu-title">🐴 Legend of Khiimori</h1>
+
+        <p class="game-menu-subtitle">
+            Главное меню конюшни
+        </p>
+
+        <p class="game-menu-text">
+            Выбери раздел: список лошадей, племенные линии, справочник или летопись.
+        </p>
+
+        <div class="game-menu-actions">
+            <a href="#horses-section" class="game-menu-button primary">🐎 Лошади</a>
+            <a href="tree.html" class="game-menu-button">🌳 Древо</a>
+            <span class="game-menu-button disabled">📚 Справочник скоро</span>
+            <span class="game-menu-button disabled">📜 Летопись скоро</span>
+        </div>
+    </div>
+</section>
         <section class="disclaimer">
             <strong>⚠️ Важно:</strong>
             данные могут быть неточными или измениться, так как Legend of Khiimori находится в разработке.
@@ -62,7 +71,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="horses-section" class="section">
             <h2 class="section-title">Лошади</h2>
 
             <div id="horse-list" class="horse-list">

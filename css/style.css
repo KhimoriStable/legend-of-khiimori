@@ -2149,4 +2149,200 @@ body.inner-bg .section-title {
     text-shadow:
         0 3px 12px rgba(0, 0, 0, 0.95),
         0 0 14px rgba(242, 216, 155, 0.35);
+}/* ===== Главное игровое меню ===== */
+
+.game-menu {
+    min-height: 420px;
+    margin: 34px 0 30px;
+    padding: 44px;
+    border-radius: 28px;
+    border: 1px solid rgba(242, 216, 155, 0.38);
+    background:
+        linear-gradient(135deg, rgba(20, 18, 14, 0.86), rgba(55, 45, 31, 0.72)),
+        radial-gradient(circle at 18% 20%, rgba(242, 216, 155, 0.18), transparent 34%);
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.62),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.game-menu::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(242, 216, 155, 0.12), transparent 30%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 55%);
+    pointer-events: none;
+}
+
+.game-menu::after {
+    content: "Legend of Khiimori";
+    position: absolute;
+    right: -20px;
+    bottom: 10px;
+    font-family: Georgia, serif;
+    font-size: 76px;
+    font-weight: bold;
+    color: rgba(242, 216, 155, 0.055);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.game-menu-content {
+    max-width: 720px;
+    position: relative;
+    z-index: 2;
+}
+
+.game-menu-kicker {
+    margin: 0 0 12px;
+    color: #f2d89b;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.game-menu h2 {
+    margin: 0;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 56px;
+    line-height: 1;
+    text-shadow:
+        0 0 14px rgba(242, 216, 155, 0.55),
+        0 6px 22px rgba(0, 0, 0, 0.95);
+}
+
+.game-menu-text {
+    max-width: 610px;
+    margin: 18px 0 28px;
+    color: #f2e6ca;
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.95);
+}
+
+.game-menu-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.game-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.42);
+    background: rgba(28, 25, 19, 0.82);
+    color: #f2d89b;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.game-menu-button:hover {
+    transform: translateY(-2px);
+    background: rgba(242, 216, 155, 0.18);
+    box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.52),
+        0 0 18px rgba(242, 216, 155, 0.18);
+}
+
+.game-menu-button.primary {
+    background: linear-gradient(180deg, #f2d89b, #c99a45);
+    color: #17130d;
+    border-color: rgba(255, 232, 175, 0.8);
+}
+
+@media (max-width: 720px) {
+    .game-menu {
+        min-height: auto;
+        padding: 30px 22px;
+        border-radius: 22px;
+    }
+
+    .game-menu h2 {
+        font-size: 38px;
+    }
+
+    .game-menu-text {
+        font-size: 16px;
+    }
+
+    .game-menu-button {
+        width: 100%;
+    }
+}/* ===== Объединённый главный экран ===== */
+
+body.home .game-menu {
+    margin-top: 48px;
+    min-height: 560px;
+}
+
+.game-menu-title {
+    margin: 0;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 64px;
+    line-height: 1;
+    text-shadow:
+        0 0 14px rgba(242, 216, 155, 0.65),
+        0 0 34px rgba(242, 216, 155, 0.34),
+        0 6px 24px rgba(0, 0, 0, 0.98);
+}
+
+.game-menu-subtitle {
+    margin: 18px 0 0;
+    color: #f2d89b;
+    font-family: Georgia, serif;
+    font-size: 34px;
+    font-weight: bold;
+    text-shadow:
+        0 0 10px rgba(242, 216, 155, 0.35),
+        0 4px 16px rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 720px) {
+    .game-menu-title {
+        font-size: 42px;
+    }
+
+    .game-menu-subtitle {
+        font-size: 26px;
+    }
+}/* ===== Исправление главного меню ===== */
+
+.game-menu-title {
+    max-width: 900px;
+    font-size: clamp(48px, 6vw, 76px);
+}
+
+.game-menu-subtitle {
+    font-size: 32px;
+}
+
+.game-menu-button.disabled {
+    opacity: 0.55;
+    cursor: default;
+    pointer-events: none;
+}
+
+.game-menu-button.disabled:hover {
+    transform: none;
+    background: rgba(28, 25, 19, 0.82);
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
