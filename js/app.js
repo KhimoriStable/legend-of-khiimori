@@ -1,6 +1,7 @@
 let allHorses = [];
 let currentLineFilter = "all";
 let currentSearchQuery = "";
+let currentStatusFilter = "all";
 
 async function loadHorses() {
     try {
@@ -17,18 +18,22 @@ async function loadHorses() {
         updateStats(allHorses);
         setupLineFilters();
         setupHorseSearch();
+        setupStatusFilter();
         renderHorseList(getVisibleHorses());
     } catch (error) {
         console.error(error);
 
         const horseList = document.getElementById("horse-list");
-        horseList.innerHTML = `
-            <div class="profile-card wide">
-                <h2>Ошибка загрузки</h2>
-                <p>Не получилось загрузить файл <span class="id-code">data/horses.json</span>.</p>
-                <p>Проверь, что файл существует и сохранён.</p>
-            </div>
-        `;
+
+        if (horseList) {
+            horseList.innerHTML = `
+                <div class="profile-card wide">
+                    <h2>Ошибка загрузки</h2>
+                    <p>Не получилось загрузить файл <span class="id-code">data/horses.json</span>.</p>
+                    <p>Проверь, что файл существует и сохранён.</p>
+                </div>
+            `;
+        }
     }
 }
 
@@ -58,16 +63,43 @@ function setupHorseSearch() {
     });
 }
 
-function getVisibleHorses() {
-    return getFilteredHorses().filter(horse => {
-        if (!currentSearchQuery) {
-            return true;
-        }
+function setupStatusFilter() {
+    const buttons = document.querySelectorAll("[data-status-filter]");
 
-        const searchableText = buildHorseSearchText(horse);
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            currentStatusFilter = button.dataset.statusFilter;
 
-        return searchableText.includes(currentSearchQuery);
+            buttons.forEach(item => item.classList.remove("active"));
+            button.classList.add("active");
+
+            renderHorseList(getVisibleHorses());
+        });
     });
+}
+
+function getVisibleHorses() {
+    return getFilteredHorses()
+        .filter(horse => {
+            if (currentStatusFilter === "ready") {
+                return horse.status === "ready";
+            }
+
+            if (currentStatusFilter === "not-ready") {
+                return horse.status !== "ready";
+            }
+
+            return true;
+        })
+        .filter(horse => {
+            if (!currentSearchQuery) {
+                return true;
+            }
+
+            const searchableText = buildHorseSearchText(horse);
+
+            return searchableText.includes(currentSearchQuery);
+        });
 }
 
 function getFilteredHorses() {

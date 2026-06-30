@@ -2970,4 +2970,38 @@ body.inner-bg .main-nav {
     color: #b9a987;
     line-height: 1.5;
     font-size: 14px;
+}/* ===== Фильтр статуса на главной ===== */
+
+.stable-status-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.status-filter-button {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.36);
+    background: rgba(28, 25, 19, 0.86);
+    color: #f2d89b;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.status-filter-button:hover {
+    transform: translateY(-2px);
+    background: rgba(242, 216, 155, 0.16);
+    border-color: rgba(242, 216, 155, 0.62);
+}
+
+.status-filter-button.active {
+    background: #f2d89b;
+    color: #17130d;
+    border-color: rgba(255, 232, 175, 0.8);
 }
