@@ -2415,4 +2415,50 @@ body.inner-bg .main-nav {
     width: 100%;
     margin: 0 auto 34px;
     padding: 22px 16px;
+}/* ===== Справочник ===== */
+
+.reference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.reference-card {
+    padding: 26px;
+    border-radius: 22px;
+    border: 1px solid rgba(242, 216, 155, 0.30);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.96), rgba(22, 21, 18, 0.96));
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.reference-card.important {
+    border-color: rgba(242, 216, 155, 0.62);
+    box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.62),
+        0 0 22px rgba(242, 216, 155, 0.12);
+}
+
+.reference-card h3 {
+    margin: 0 0 12px;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(242, 216, 155, 0.22);
+}
+
+.reference-card p {
+    margin: 0;
+    color: #f0e4cf;
+    line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+    .reference-grid {
+        grid-template-columns: 1fr;
+    }
 }
