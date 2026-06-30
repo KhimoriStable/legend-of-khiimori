@@ -2574,4 +2574,115 @@ body.inner-bg .main-nav {
     .wiki-links-grid {
         grid-template-columns: 1fr;
     }
+}/* ===== Поиск по справочнику ===== */
+
+.reference-search-panel {
+    margin: 0 0 28px;
+    padding: 24px;
+    border-radius: 22px;
+    border: 1px solid rgba(242, 216, 155, 0.34);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.96), rgba(22, 21, 18, 0.96));
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.reference-search-panel label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.9),
+        0 0 12px rgba(242, 216, 155, 0.22);
+}
+
+.reference-search-input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.38);
+    background: rgba(17, 15, 12, 0.82);
+    color: #f0e4cf;
+    font-size: 16px;
+    outline: none;
+}
+
+.reference-search-input:focus {
+    border-color: rgba(242, 216, 155, 0.72);
+    box-shadow: 0 0 0 3px rgba(242, 216, 155, 0.12);
+}
+
+.reference-search-input::placeholder {
+    color: rgba(240, 228, 207, 0.55);
+}
+
+.reference-search-results {
+    margin-top: 18px;
+}
+
+.reference-search-title {
+    margin: 0 0 14px;
+    color: #f2d89b;
+    font-size: 18px;
+}
+
+.reference-search-list {
+    display: grid;
+    gap: 14px;
+}
+
+.reference-search-result {
+    display: block;
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px solid rgba(242, 216, 155, 0.26);
+    background: rgba(20, 18, 14, 0.72);
+    color: #f0e4cf;
+    text-decoration: none;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease;
+}
+
+.reference-search-result:hover {
+    transform: translateY(-2px);
+    border-color: rgba(242, 216, 155, 0.55);
+    background: rgba(42, 36, 26, 0.86);
+}
+
+.reference-search-result strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffe4a6;
+    font-size: 18px;
+}
+
+.reference-search-result p {
+    margin: 0 0 12px;
+    line-height: 1.55;
+}
+
+.reference-result-section {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: rgba(242, 216, 155, 0.10);
+    color: #f2d89b;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.reference-search-empty {
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(242, 216, 155, 0.24);
+    background: rgba(20, 18, 14, 0.72);
+    color: #f0e4cf;
 }

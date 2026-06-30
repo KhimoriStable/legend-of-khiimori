@@ -26,12 +26,100 @@ function getSectionIndexFromUrl() {
     return index;
 }
 
+function normalizeSearchValue(value) {
+    return String(value ?? "").toLowerCase().trim();
+}
+
+function getAllReferenceEntries(sections) {
+    return sections.flatMap((section, sectionIndex) => {
+        return (section.items ?? []).map(item => ({
+            sectionIndex,
+            sectionTitle: section.section,
+            title: item.title,
+            text: item.text,
+            important: item.important
+        }));
+    });
+}
+
+function renderSearchResults(resultsContainer, entries, query) {
+    if (!resultsContainer) return;
+
+    if (!query) {
+        resultsContainer.innerHTML = "";
+        return;
+    }
+
+    const normalizedQuery = normalizeSearchValue(query);
+
+    const matches = entries.filter(entry => {
+        const haystack = normalizeSearchValue(`
+            ${entry.sectionTitle}
+            ${entry.title}
+            ${entry.text}
+        `);
+
+        return haystack.includes(normalizedQuery);
+    });
+
+    if (matches.length === 0) {
+        resultsContainer.innerHTML = `
+            <div class="reference-search-empty">
+                Ничего не найдено. Попробуй другое слово: например “жара”, “горы”, “трусость”, “выдержка”.
+            </div>
+        `;
+        return;
+    }
+
+    resultsContainer.innerHTML = `
+        <h3 class="reference-search-title">Найдено: ${matches.length}</h3>
+
+        <div class="reference-search-list">
+            ${matches.map(entry => `
+                <a class="reference-search-result" href="reference.html?section=${entry.sectionIndex}">
+                    <span class="reference-result-section">${escapeHtml(entry.sectionTitle)}</span>
+                    <strong>${escapeHtml(entry.title)}</strong>
+                    <p>${escapeHtml(entry.text)}</p>
+                    <span class="reference-open-link">Открыть раздел →</span>
+                </a>
+            `).join("")}
+        </div>
+    `;
+}
+
+function setupReferenceSearch(sections) {
+    const searchInput = document.getElementById("reference-search-input");
+    const resultsContainer = document.getElementById("reference-search-results");
+
+    if (!searchInput || !resultsContainer) return;
+
+    const entries = getAllReferenceEntries(sections);
+
+    searchInput.addEventListener("input", () => {
+        renderSearchResults(resultsContainer, entries, searchInput.value);
+    });
+}
+
 function renderReferenceHome(sections) {
     if (!referenceContent) return;
 
     referenceContent.innerHTML = `
         <section class="section">
             <h2 class="section-title">Разделы справочника</h2>
+
+            <div class="reference-search-panel">
+                <label for="reference-search-input">Поиск по справочнику</label>
+
+                <input
+                    id="reference-search-input"
+                    class="reference-search-input"
+                    type="search"
+                    placeholder="Например: жара, трусость, горы, выдержка, вьючная..."
+                    autocomplete="off"
+                >
+
+                <div id="reference-search-results" class="reference-search-results"></div>
+            </div>
 
             <div class="reference-grid reference-index-grid">
                 ${sections.map((section, index) => `
@@ -44,6 +132,8 @@ function renderReferenceHome(sections) {
             </div>
         </section>
     `;
+
+    setupReferenceSearch(sections);
 }
 
 function renderReferenceSection(sections, sectionIndex) {
