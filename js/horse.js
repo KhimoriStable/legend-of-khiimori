@@ -70,6 +70,10 @@ function renderHorseProfile(horses, horse) {
                 : "Лошадь пока не готова к разведению."}
             </p>
         </article>
+        <article class="profile-card wide breeding-assessment-card">
+            <h2>🏇 Племенная оценка</h2>
+            ${renderBreedingAssessment(horses, horse)}
+        </article>
 
         <article class="profile-card">
             <h2>🐴 Племенная программа</h2>
@@ -115,7 +119,136 @@ function renderHorseProfile(horses, horse) {
         </article>
     `;
 }
+function renderBreedingAssessment(horses, horse) {
+    const program = horse.program || {};
+    const skills = getAssessmentSkills(horse);
+    const activeSkills = skills.filter(skill => !skill.includes("*"));
+    const hiddenSkills = skills.filter(skill => skill.includes("*"));
+    const notMaxedStats = getNotMaxedStats(horse);
+    const riskTraits = getRiskTraits(horse);
+    const partnerName = program.partner || getPartnerName(horses, horse) || "Не назначен";
+    const role = program.role || horse.lineRole || getFounderText(horse);
+    const direction = program.direction || "Направление не указано";
+    const isReady = horse.status === "ready";
 
+    return `
+        <div class="assessment-hero">
+            <div class="assessment-status ${isReady ? "ready" : "not-ready"}">
+                <span>${isReady ? "✅" : "⏳"}</span>
+                <strong>${safeAssessmentText(horse.statusText || "Статус не указан")}</strong>
+                <small>${isReady
+                    ? "Лошадь может участвовать в племенной программе."
+                    : "Перед разведением нужно довести все основные характеристики до максимума."}
+                </small>
+            </div>
+
+            <div class="assessment-meta-grid">
+                <div>
+                    <span>Роль</span>
+                    <strong>${safeAssessmentText(role)}</strong>
+                </div>
+
+                <div>
+                    <span>Линия</span>
+                    <strong>${safeAssessmentText(getLineText(horse))}</strong>
+                </div>
+
+                <div>
+                    <span>Пара</span>
+                    <strong>${safeAssessmentText(partnerName)}</strong>
+                </div>
+
+                <div>
+                    <span>Направление</span>
+                    <strong>${safeAssessmentText(direction)}</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="assessment-columns">
+            <section class="assessment-panel">
+                <h3>✨ Что ценно</h3>
+
+                ${renderAssessmentList([
+                    horse.founderStatus === "founder"
+                        ? "Основатель линии: важна как база для будущего отбора."
+                        : "Участвует в линии как потомок или рабочая племенная лошадь.",
+                    activeSkills.length
+                        ? `Активные навыки для отбора: ${activeSkills.slice(0, 8).join(", ")}.`
+                        : "Активные навыки пока не указаны.",
+                    horse.traits?.length
+                        ? `Черты для отслеживания: ${horse.traits.join(", ")}.`
+                        : "Черты характера пока не указаны.",
+                    horse.pedigree?.motherId || horse.pedigree?.fatherId
+                        ? "Есть данные по родителям, можно отслеживать наследование."
+                        : "Родители неизвестны, поэтому лошадь удобна как чистая стартовая точка линии."
+                ])}
+            </section>
+
+            <section class="assessment-panel">
+                <h3>🔎 Что проверить</h3>
+
+                ${renderAssessmentList([
+                    notMaxedStats.length
+                        ? `Не максимум по характеристикам: ${notMaxedStats.join(", ")}.`
+                        : "Все основные характеристики уже на максимуме.",
+                    hiddenSkills.length
+                        ? `Серые/скрытые навыки для наблюдения: ${hiddenSkills.join(", ")}.`
+                        : "Серые или скрытые навыки не указаны.",
+                    riskTraits.length
+                        ? `Черты, требующие внимания: ${riskTraits.join(", ")}.`
+                        : "Критичных риск-черт в текущем списке не отмечено.",
+                    "Биомную специализацию пока не назначаем: для этого позже будут отдельные линии и правила отбора."
+                ])}
+            </section>
+        </div>
+    `;
+}
+
+function getAssessmentSkills(horse) {
+    return (horse.stats || [])
+        .flatMap(stat => stat.skills || [])
+        .filter(Boolean);
+}
+
+function getNotMaxedStats(horse) {
+    return (horse.stats || [])
+        .filter(stat => Number(stat.current) < Number(stat.max))
+        .map(stat => `${stat.name} ${stat.current}/${stat.max}`);
+}
+
+function getRiskTraits(horse) {
+    const riskTraitNames = [
+        "Трусость",
+        "Раздражительность от голода",
+        "Мерзлявость",
+        "Мерзлявый",
+        "Метеочувствительность",
+        "Нелюбовь к ветру"
+    ];
+
+    return (horse.traits || [])
+        .filter(trait => riskTraitNames.includes(trait));
+}
+
+function renderAssessmentList(items) {
+    return `
+        <ul class="assessment-list">
+            ${items.map(item => `
+                <li>${safeAssessmentText(item)}</li>
+            `).join("")}
+        </ul>
+    `;
+}
+
+function safeAssessmentText(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 function renderProgram(horses, horse) {
     const program = horse.program || {};
 
