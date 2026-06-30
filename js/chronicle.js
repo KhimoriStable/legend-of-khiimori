@@ -129,7 +129,7 @@ function renderChronicle(entries, page = 1) {
                 </p>
             </section>
 
-            ${importantEntries.length > 0 ? `
+            ${currentPage === 1 && importantEntries.length > 0 ? `
                 <section class="chronicle-important-section">
                     <h3 class="chronicle-block-title">⭐ Важные события</h3>
 
