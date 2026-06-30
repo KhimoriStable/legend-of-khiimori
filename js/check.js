@@ -37,6 +37,49 @@ async function loadJson(file) {
     return response.json();
 }
 
+function normalizeText(value) {
+    return String(value ?? "")
+        .toLowerCase()
+        .replaceAll("ё", "е")
+        .replace(/[^\p{L}\p{N}\s]/gu, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function cleanSkillName(skill) {
+    return String(skill ?? "")
+        .replaceAll("*", "")
+        .replace(/\s+(I|II|III)$/i, "")
+        .trim();
+}
+
+function getHorseSkills(horses) {
+    const skills = horses.flatMap(horse => {
+        return (horse.stats || [])
+            .flatMap(stat => stat.skills || []);
+    });
+
+    return [...new Set(skills.map(cleanSkillName).filter(Boolean))];
+}
+
+function getHorseTraits(horses) {
+    const traits = horses.flatMap(horse => horse.traits || []);
+
+    return [...new Set(traits.filter(Boolean))];
+}
+
+function getReferenceSearchText(referenceSections) {
+    return normalizeText(
+        referenceSections.map(section => {
+            const itemsText = (section.items || [])
+                .map(item => `${item.title} ${item.text}`)
+                .join(" ");
+
+            return `${section.section} ${itemsText}`;
+        }).join(" ")
+    );
+}
+
 function validateHorses(horses) {
     const warnings = [];
 
@@ -175,6 +218,44 @@ function validateChronicle(entries) {
     };
 }
 
+function validateHorseKnowledge(horses, referenceSections) {
+    const warnings = [];
+
+    if (!Array.isArray(horses) || !Array.isArray(referenceSections)) {
+        return {
+            ok: false,
+            message: "Нельзя проверить навыки и черты: horses.json или reference.json загружены неправильно.",
+            warnings
+        };
+    }
+
+    const referenceText = getReferenceSearchText(referenceSections);
+    const skills = getHorseSkills(horses);
+    const traits = getHorseTraits(horses);
+
+    const missingSkills = skills.filter(skill => {
+        return !referenceText.includes(normalizeText(skill));
+    });
+
+    const missingTraits = traits.filter(trait => {
+        return !referenceText.includes(normalizeText(trait));
+    });
+
+    missingSkills.forEach(skill => {
+        warnings.push(`Навык есть у лошадей, но не найден в справочнике: ${skill}.`);
+    });
+
+    missingTraits.forEach(trait => {
+        warnings.push(`Черта есть у лошадей, но не найдена в справочнике: ${trait}.`);
+    });
+
+    return {
+        ok: true,
+        message: `Проверено навыков: ${skills.length}. Проверено черт: ${traits.length}.`,
+        warnings
+    };
+}
+
 function renderCheckCard(result) {
     const statusClass = result.ok && result.warnings.length === 0
         ? "ok"
@@ -211,11 +292,14 @@ function renderCheckCard(result) {
 
 async function runChecks() {
     const results = [];
+    const loadedData = {};
 
     for (const check of checks) {
         try {
             const data = await loadJson(check.file);
             const validation = check.validator(data);
+
+            loadedData[check.file] = data;
 
             results.push({
                 name: check.name,
@@ -233,6 +317,21 @@ async function runChecks() {
                 warnings: []
             });
         }
+    }
+
+    if (loadedData["data/horses.json"] && loadedData["data/reference.json"]) {
+        const knowledgeValidation = validateHorseKnowledge(
+            loadedData["data/horses.json"],
+            loadedData["data/reference.json"]
+        );
+
+        results.push({
+            name: "Навыки и черты в справочнике",
+            file: "data/horses.json + data/reference.json",
+            ok: knowledgeValidation.ok,
+            message: knowledgeValidation.message,
+            warnings: knowledgeValidation.warnings
+        });
     }
 
     checkResults.innerHTML = results.map(renderCheckCard).join("");
