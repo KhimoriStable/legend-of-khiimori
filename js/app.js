@@ -21,6 +21,39 @@ async function loadHorses() {
         setupHorseSearch();
         setupStatusFilter();
         setupHorseSort();
+        function setupResetFilters() {
+    const resetButton = document.getElementById("reset-stable-filters");
+    const searchInput = document.getElementById("horse-search-input");
+    const sortSelect = document.getElementById("horse-sort-select");
+
+    if (!resetButton) return;
+
+    resetButton.addEventListener("click", () => {
+        currentLineFilter = "all";
+        currentSearchQuery = "";
+        currentStatusFilter = "all";
+        currentSortMode = "id";
+
+        if (searchInput) {
+            searchInput.value = "";
+        }
+
+        if (sortSelect) {
+            sortSelect.value = "id";
+        }
+
+        document.querySelectorAll("[data-line-filter]").forEach(button => {
+            button.classList.toggle("active", button.dataset.lineFilter === "all");
+        });
+
+        document.querySelectorAll("[data-status-filter]").forEach(button => {
+            button.classList.toggle("active", button.dataset.statusFilter === "all");
+        });
+
+        renderHorseList(getVisibleHorses());
+    });
+}
+        setupResetFilters();
         renderHorseList(getVisibleHorses());
     } catch (error) {
         console.error(error);

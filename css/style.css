@@ -3049,3 +3049,29 @@ body.inner-bg .main-nav {
     font-weight: bold;
     font-size: 14px;
 }
+/* ===== Кнопка сброса фильтров ===== */
+
+.stable-reset-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    margin-top: 14px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.36);
+    background: rgba(28, 25, 19, 0.86);
+    color: #f2d89b;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.stable-reset-button:hover {
+    transform: translateY(-2px);
+    background: rgba(242, 216, 155, 0.16);
+    border-color: rgba(242, 216, 155, 0.62);
+}
