@@ -21,38 +21,6 @@ async function loadHorses() {
         setupHorseSearch();
         setupStatusFilter();
         setupHorseSort();
-        function setupResetFilters() {
-    const resetButton = document.getElementById("reset-stable-filters");
-    const searchInput = document.getElementById("horse-search-input");
-    const sortSelect = document.getElementById("horse-sort-select");
-
-    if (!resetButton) return;
-
-    resetButton.addEventListener("click", () => {
-        currentLineFilter = "all";
-        currentSearchQuery = "";
-        currentStatusFilter = "all";
-        currentSortMode = "id";
-
-        if (searchInput) {
-            searchInput.value = "";
-        }
-
-        if (sortSelect) {
-            sortSelect.value = "id";
-        }
-
-        document.querySelectorAll("[data-line-filter]").forEach(button => {
-            button.classList.toggle("active", button.dataset.lineFilter === "all");
-        });
-
-        document.querySelectorAll("[data-status-filter]").forEach(button => {
-            button.classList.toggle("active", button.dataset.statusFilter === "all");
-        });
-
-        renderHorseList(getVisibleHorses());
-    });
-}
         setupResetFilters();
         renderHorseList(getVisibleHorses());
     } catch (error) {
@@ -120,6 +88,39 @@ function setupHorseSort() {
 
     sortSelect.addEventListener("change", () => {
         currentSortMode = sortSelect.value;
+        renderHorseList(getVisibleHorses());
+    });
+}
+
+function setupResetFilters() {
+    const resetButton = document.getElementById("reset-stable-filters");
+    const searchInput = document.getElementById("horse-search-input");
+    const sortSelect = document.getElementById("horse-sort-select");
+
+    if (!resetButton) return;
+
+    resetButton.addEventListener("click", () => {
+        currentLineFilter = "all";
+        currentSearchQuery = "";
+        currentStatusFilter = "all";
+        currentSortMode = "id";
+
+        if (searchInput) {
+            searchInput.value = "";
+        }
+
+        if (sortSelect) {
+            sortSelect.value = "id";
+        }
+
+        document.querySelectorAll("[data-line-filter]").forEach(button => {
+            button.classList.toggle("active", button.dataset.lineFilter === "all");
+        });
+
+        document.querySelectorAll("[data-status-filter]").forEach(button => {
+            button.classList.toggle("active", button.dataset.statusFilter === "all");
+        });
+
         renderHorseList(getVisibleHorses());
     });
 }
@@ -200,9 +201,7 @@ function sortHorses(horses) {
 
 function buildHorseSearchText(horse) {
     const traits = horse.traits || [];
-
-    const skills = (horse.stats || [])
-        .flatMap(stat => stat.skills || []);
+    const skills = getHorseSkills(horse);
 
     const parameters = (horse.parameters || [])
         .map(parameter => `${parameter.name} ${parameter.value}`);
@@ -225,6 +224,12 @@ function buildHorseSearchText(horse) {
         ${skills.join(" ")}
         ${parameters.join(" ")}
     `.toLowerCase();
+}
+
+function getHorseSkills(horse) {
+    return (horse.stats || [])
+        .flatMap(stat => stat.skills || [])
+        .filter(Boolean);
 }
 
 function updateStats(horses) {
@@ -265,28 +270,60 @@ function renderHorseList(horses) {
 
     horses.forEach(horse => {
         const card = document.createElement("a");
+        const traits = horse.traits || [];
+        const skills = getHorseSkills(horse);
 
         card.className = "horse-card";
         card.href = `horse.html?id=${horse.id}`;
 
         card.innerHTML = `
-            <h3>${horse.name}</h3>
-            <p><strong>ID:</strong> <span class="id-code">${horse.id}</span></p>
-            <p><strong>Пол:</strong> ${horse.sex} ${horse.sexSymbol}</p>
-            <p><strong>Порода:</strong> ${horse.breed}</p>
-            <p><strong>Масть:</strong> ${horse.coat}</p>
+            <h3>${escapeHtml(horse.name)}</h3>
+            <p><strong>ID:</strong> <span class="id-code">${escapeHtml(horse.id)}</span></p>
+            <p><strong>Пол:</strong> ${escapeHtml(horse.sex)} ${escapeHtml(horse.sexSymbol || "")}</p>
+            <p><strong>Порода:</strong> ${escapeHtml(horse.breed)}</p>
+            <p><strong>Масть:</strong> ${escapeHtml(horse.coat)}</p>
 
             <div class="horse-line-badge">
-                🌳 ${getLineText(horse)}
+                🌳 ${escapeHtml(getLineText(horse))}
             </div>
 
+            ${renderMiniTags("Черты", traits, "trait")}
+            ${renderMiniTags("Навыки", skills, "skill")}
+
             <p class="${horse.status === "ready" ? "status-ready" : "status-not-ready"}">
-                ${horse.status === "ready" ? "✅" : "⏳"} ${horse.statusText}
+                ${horse.status === "ready" ? "✅" : "⏳"} ${escapeHtml(horse.statusText)}
             </p>
         `;
 
         horseList.appendChild(card);
     });
+}
+
+function renderMiniTags(title, items, type) {
+    if (!items || items.length === 0) {
+        return "";
+    }
+
+    const visibleItems = items.slice(0, 4);
+    const hiddenCount = items.length - visibleItems.length;
+
+    return `
+        <div class="horse-mini-tags">
+            <strong>${title}:</strong>
+
+            <div class="horse-mini-tag-list">
+                ${visibleItems.map(item => `
+                    <span class="horse-mini-tag ${type}">
+                        ${escapeHtml(item)}
+                    </span>
+                `).join("")}
+
+                ${hiddenCount > 0 ? `
+                    <span class="horse-mini-tag more">+${hiddenCount}</span>
+                ` : ""}
+            </div>
+        </div>
+    `;
 }
 
 function getLineText(horse) {
@@ -299,6 +336,15 @@ function getLineText(horse) {
     }
 
     return horse.lineName || horse.line || "Линия не назначена";
+}
+
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 }
 
 loadHorses();

@@ -3075,3 +3075,51 @@ body.inner-bg .main-nav {
     background: rgba(242, 216, 155, 0.16);
     border-color: rgba(242, 216, 155, 0.62);
 }
+/* ===== Мини-теги на карточках лошадей ===== */
+
+.horse-mini-tags {
+    margin: 12px 0;
+}
+
+.horse-mini-tags strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #f2d89b;
+    font-size: 13px;
+}
+
+.horse-mini-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.horse-mini-tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 9px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.28);
+    background: rgba(242, 216, 155, 0.09);
+    color: #f0e4cf;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.horse-mini-tag.trait {
+    border-color: rgba(226, 169, 96, 0.38);
+    background: rgba(226, 169, 96, 0.12);
+}
+
+.horse-mini-tag.skill {
+    border-color: rgba(154, 199, 143, 0.38);
+    background: rgba(154, 199, 143, 0.12);
+}
+
+.horse-mini-tag.more {
+    border-color: rgba(242, 216, 155, 0.42);
+    background: rgba(242, 216, 155, 0.16);
+    color: #f2d89b;
+}
