@@ -204,10 +204,20 @@ function updateStats(horses) {
     document.getElementById("not-ready-horses").textContent = notReady;
 }
 
+function updateVisibleCount(visibleCount, totalCount) {
+    const countElement = document.getElementById("horse-visible-count");
+
+    if (!countElement) return;
+
+    countElement.textContent = `Показано: ${visibleCount} из ${totalCount} лошадей`;
+}
+
 function renderHorseList(horses) {
     const horseList = document.getElementById("horse-list");
 
     horseList.innerHTML = "";
+
+    updateVisibleCount(horses.length, allHorses.length);
 
     if (!horses.length) {
         horseList.innerHTML = `

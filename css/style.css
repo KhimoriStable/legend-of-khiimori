@@ -3036,3 +3036,16 @@ body.inner-bg .main-nav {
     border-color: rgba(242, 216, 155, 0.72);
     box-shadow: 0 0 0 3px rgba(242, 216, 155, 0.12);
 }
+/* ===== Счётчик показанных лошадей ===== */
+
+.stable-visible-count {
+    margin: 18px 0 0;
+    padding: 10px 14px;
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.30);
+    background: rgba(242, 216, 155, 0.08);
+    color: #f2d89b;
+    font-weight: bold;
+    font-size: 14px;
+}
