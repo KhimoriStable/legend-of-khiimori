@@ -1,5 +1,6 @@
 let allHorses = [];
 let currentLineFilter = "all";
+let currentSearchQuery = "";
 
 async function loadHorses() {
     try {
@@ -15,7 +16,8 @@ async function loadHorses() {
 
         updateStats(allHorses);
         setupLineFilters();
-        renderHorseList(getFilteredHorses());
+        setupHorseSearch();
+        renderHorseList(getVisibleHorses());
     } catch (error) {
         console.error(error);
 
@@ -40,8 +42,31 @@ function setupLineFilters() {
             buttons.forEach(item => item.classList.remove("active"));
             button.classList.add("active");
 
-            renderHorseList(getFilteredHorses());
+            renderHorseList(getVisibleHorses());
         });
+    });
+}
+
+function setupHorseSearch() {
+    const searchInput = document.getElementById("horse-search-input");
+
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", () => {
+        currentSearchQuery = searchInput.value.toLowerCase().trim();
+        renderHorseList(getVisibleHorses());
+    });
+}
+
+function getVisibleHorses() {
+    return getFilteredHorses().filter(horse => {
+        if (!currentSearchQuery) {
+            return true;
+        }
+
+        const searchableText = buildHorseSearchText(horse);
+
+        return searchableText.includes(currentSearchQuery);
     });
 }
 
@@ -55,6 +80,35 @@ function getFilteredHorses() {
     }
 
     return allHorses.filter(horse => horse.line === currentLineFilter);
+}
+
+function buildHorseSearchText(horse) {
+    const traits = horse.traits || [];
+
+    const skills = (horse.stats || [])
+        .flatMap(stat => stat.skills || []);
+
+    const parameters = (horse.parameters || [])
+        .map(parameter => `${parameter.name} ${parameter.value}`);
+
+    return `
+        ${horse.id}
+        ${horse.name}
+        ${horse.sex}
+        ${horse.breed}
+        ${horse.coat}
+        ${horse.status}
+        ${horse.statusText}
+        ${horse.origin}
+        ${horse.line}
+        ${horse.lineName}
+        ${horse.lineRole}
+        ${horse.heightCm}
+        ${horse.weightKg}
+        ${traits.join(" ")}
+        ${skills.join(" ")}
+        ${parameters.join(" ")}
+    `.toLowerCase();
 }
 
 function updateStats(horses) {
@@ -76,7 +130,8 @@ function renderHorseList(horses) {
         horseList.innerHTML = `
             <article class="profile-card wide">
                 <h2>Лошадей не найдено</h2>
-                <p>В выбранной линии пока нет лошадей.</p>
+                <p>По текущему фильтру и поиску ничего не найдено.</p>
+                <p>Попробуй другое слово или выбери фильтр “Все”.</p>
             </article>
         `;
         return;
