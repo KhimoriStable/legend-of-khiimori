@@ -2685,4 +2685,250 @@ body.inner-bg .main-nav {
     border: 1px solid rgba(242, 216, 155, 0.24);
     background: rgba(20, 18, 14, 0.72);
     color: #f0e4cf;
+}/* ===== Новая структура летописи ===== */
+
+.chronicle-layout {
+    display: grid;
+    gap: 34px;
+}
+
+.chronicle-intro-card {
+    padding: 30px;
+    border-radius: 26px;
+    border: 1px solid rgba(242, 216, 155, 0.42);
+    background:
+        linear-gradient(135deg, rgba(49, 45, 37, 0.97), rgba(20, 18, 14, 0.97)),
+        radial-gradient(circle at 15% 20%, rgba(242, 216, 155, 0.16), transparent 34%);
+    box-shadow:
+        0 22px 52px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.chronicle-kicker {
+    margin: 0 0 10px;
+    color: #c9a24d;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+}
+
+.chronicle-intro-card h3,
+.chronicle-block-title {
+    margin: 0 0 16px;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    text-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.9),
+        0 0 14px rgba(242, 216, 155, 0.22);
+}
+
+.chronicle-intro-card p {
+    max-width: 820px;
+    margin: 0;
+    color: #f0e4cf;
+    line-height: 1.65;
+}
+
+.chronicle-important-section,
+.chronicle-timeline-section {
+    display: grid;
+    gap: 18px;
+}
+
+.chronicle-important-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.chronicle-featured-card {
+    padding: 26px;
+    border-radius: 24px;
+    border: 1px solid rgba(242, 216, 155, 0.56);
+    background:
+        linear-gradient(180deg, rgba(61, 52, 36, 0.98), rgba(24, 22, 18, 0.98));
+    box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.62),
+        0 0 22px rgba(242, 216, 155, 0.12);
+}
+
+.chronicle-entry-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.chronicle-featured-card h3,
+.chronicle-timeline-card h3 {
+    margin: 0 0 12px;
+    color: #ffe4a6;
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.chronicle-featured-card p,
+.chronicle-timeline-card p {
+    margin: 0;
+    color: #f0e4cf;
+    line-height: 1.65;
+}
+
+.chronicle-timeline {
+    position: relative;
+    display: grid;
+    gap: 18px;
+    padding-left: 28px;
+}
+
+.chronicle-timeline::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 8px;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(
+        180deg,
+        rgba(242, 216, 155, 0.7),
+        rgba(242, 216, 155, 0.08)
+    );
+}
+
+.chronicle-timeline-entry {
+    position: relative;
+}
+
+.chronicle-marker {
+    position: absolute;
+    top: 24px;
+    left: -27px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(242, 216, 155, 0.78);
+    background: #17130d;
+    box-shadow: 0 0 16px rgba(242, 216, 155, 0.26);
+}
+
+.chronicle-timeline-entry.important .chronicle-marker {
+    background: #f2d89b;
+    box-shadow: 0 0 22px rgba(242, 216, 155, 0.5);
+}
+
+.chronicle-timeline-card {
+    padding: 24px;
+    border-radius: 22px;
+    border: 1px solid rgba(242, 216, 155, 0.30);
+    background:
+        linear-gradient(180deg, rgba(49, 45, 37, 0.96), rgba(22, 21, 18, 0.96));
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.55),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.chronicle-date {
+    display: inline-block;
+    color: #c9a24d;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.chronicle-tag {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.34);
+    background: rgba(242, 216, 155, 0.10);
+    color: #f2d89b;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+@media (max-width: 760px) {
+    .chronicle-important-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chronicle-timeline {
+        padding-left: 22px;
+    }
+
+    .chronicle-marker {
+        left: -25px;
+    }
+}/* ===== Страницы летописи ===== */
+
+.chronicle-timeline-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.chronicle-page-info {
+    margin: 0 0 16px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.28);
+    background: rgba(242, 216, 155, 0.08);
+    color: #f2d89b;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.chronicle-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.chronicle-page-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.chronicle-page-button {
+    min-width: 42px;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.36);
+    background: rgba(28, 25, 19, 0.86);
+    color: #f2d89b;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.chronicle-page-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    background: rgba(242, 216, 155, 0.16);
+    border-color: rgba(242, 216, 155, 0.62);
+}
+
+.chronicle-page-button.active {
+    background: #f2d89b;
+    color: #17130d;
+    border-color: rgba(255, 232, 175, 0.8);
+}
+
+.chronicle-page-button:disabled {
+    opacity: 0.42;
+    cursor: default;
 }
