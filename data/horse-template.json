@@ -1,0 +1,88 @@
+{
+  "id": "H000",
+  "name": "Имя лошади",
+  "sex": "Самец / Самка",
+  "sexSymbol": "♂ / ♀",
+  "breed": "Порода",
+  "coat": "Масть",
+  "origin": "Куплена у торговца / Рождена в конюшне / Другое",
+
+  "status": "not-ready",
+  "statusText": "Не готова к разведению",
+
+  "line": null,
+  "lineName": "Линия не назначена",
+  "lineRole": "Роль не назначена",
+  "founderStatus": null,
+
+  "heightCm": 0,
+  "weightKg": 0,
+
+  "traits": [
+    "Черта 1",
+    "Черта 2",
+    "Черта 3"
+  ],
+
+  "stats": [
+    {
+      "name": "Сила",
+      "current": 0,
+      "max": 0,
+      "skills": []
+    },
+    {
+      "name": "Координация",
+      "current": 0,
+      "max": 0,
+      "skills": []
+    },
+    {
+      "name": "Выносливость",
+      "current": 0,
+      "max": 0,
+      "skills": []
+    },
+    {
+      "name": "Устойчивость",
+      "current": 0,
+      "max": 0,
+      "skills": []
+    },
+    {
+      "name": "Дух",
+      "current": 0,
+      "max": 0,
+      "skills": []
+    }
+  ],
+
+  "parameters": [
+    {
+      "name": "Скорость",
+      "value": "Не указано"
+    },
+    {
+      "name": "Грузоподъёмность",
+      "value": "Не указано"
+    }
+  ],
+
+  "genes": {
+    "note": "Гены добавить сюда, если они известны"
+  },
+
+  "pedigree": {
+    "motherId": null,
+    "fatherId": null
+  },
+
+  "offspring": [],
+
+  "program": {
+    "role": "Не назначена",
+    "partner": "Не назначен",
+    "direction": "Не назначено",
+    "notes": "Заметки по племенной программе"
+  }
+}
