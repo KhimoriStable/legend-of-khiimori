@@ -75,7 +75,16 @@
     <button class="status-filter-button" data-status-filter="ready">Готовы</button>
     <button class="status-filter-button" data-status-filter="not-ready">Не готовы</button>
 </div>
-    </div>
+<div class="stable-sort-panel">
+    <label for="horse-sort-select">Сортировка</label>
+
+    <select id="horse-sort-select" class="stable-sort-select">
+        <option value="id">По ID</option>
+        <option value="name">По имени</option>
+        <option value="line">По линии</option>
+        <option value="status">По готовности</option>
+    </select>
+</div>
 </section>
         <section class="section compact-section">
             <h2 class="section-title">Фильтр по линиям</h2>

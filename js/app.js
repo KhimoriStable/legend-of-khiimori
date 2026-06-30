@@ -2,6 +2,7 @@ let allHorses = [];
 let currentLineFilter = "all";
 let currentSearchQuery = "";
 let currentStatusFilter = "all";
+let currentSortMode = "id";
 
 async function loadHorses() {
     try {
@@ -19,6 +20,7 @@ async function loadHorses() {
         setupLineFilters();
         setupHorseSearch();
         setupStatusFilter();
+        setupHorseSort();
         renderHorseList(getVisibleHorses());
     } catch (error) {
         console.error(error);
@@ -78,8 +80,19 @@ function setupStatusFilter() {
     });
 }
 
+function setupHorseSort() {
+    const sortSelect = document.getElementById("horse-sort-select");
+
+    if (!sortSelect) return;
+
+    sortSelect.addEventListener("change", () => {
+        currentSortMode = sortSelect.value;
+        renderHorseList(getVisibleHorses());
+    });
+}
+
 function getVisibleHorses() {
-    return getFilteredHorses()
+    const filteredHorses = getFilteredHorses()
         .filter(horse => {
             if (currentStatusFilter === "ready") {
                 return horse.status === "ready";
@@ -100,6 +113,8 @@ function getVisibleHorses() {
 
             return searchableText.includes(currentSearchQuery);
         });
+
+    return sortHorses(filteredHorses);
 }
 
 function getFilteredHorses() {
@@ -112,6 +127,42 @@ function getFilteredHorses() {
     }
 
     return allHorses.filter(horse => horse.line === currentLineFilter);
+}
+
+function sortHorses(horses) {
+    const collator = new Intl.Collator("ru", {
+        numeric: true,
+        sensitivity: "base"
+    });
+
+    return [...horses].sort((firstHorse, secondHorse) => {
+        if (currentSortMode === "name") {
+            return collator.compare(firstHorse.name || "", secondHorse.name || "");
+        }
+
+        if (currentSortMode === "line") {
+            const firstLine = firstHorse.line || "ZZZ";
+            const secondLine = secondHorse.line || "ZZZ";
+
+            return collator.compare(
+                `${firstLine} ${firstHorse.id}`,
+                `${secondLine} ${secondHorse.id}`
+            );
+        }
+
+        if (currentSortMode === "status") {
+            const firstReady = firstHorse.status === "ready" ? 0 : 1;
+            const secondReady = secondHorse.status === "ready" ? 0 : 1;
+
+            if (firstReady !== secondReady) {
+                return firstReady - secondReady;
+            }
+
+            return collator.compare(firstHorse.id || "", secondHorse.id || "");
+        }
+
+        return collator.compare(firstHorse.id || "", secondHorse.id || "");
+    });
 }
 
 function buildHorseSearchText(horse) {

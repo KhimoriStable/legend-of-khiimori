@@ -3005,3 +3005,34 @@ body.inner-bg .main-nav {
     color: #17130d;
     border-color: rgba(255, 232, 175, 0.8);
 }
+/* ===== Сортировка лошадей на главной ===== */
+
+.stable-sort-panel {
+    display: grid;
+    gap: 8px;
+    max-width: 280px;
+    margin-top: 18px;
+}
+
+.stable-sort-panel label {
+    color: #f2d89b;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.stable-sort-select {
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(242, 216, 155, 0.38);
+    background: rgba(17, 15, 12, 0.88);
+    color: #f0e4cf;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+}
+
+.stable-sort-select:focus {
+    border-color: rgba(242, 216, 155, 0.72);
+    box-shadow: 0 0 0 3px rgba(242, 216, 155, 0.12);
+}
