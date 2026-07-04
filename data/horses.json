@@ -18,7 +18,7 @@
     "program": {
       "lineFullName": "Линия Хавара и Амении",
       "role": "Основатель",
-      "direction": "Завершённая основательская линия",
+      "direction": "Универсальная линия",
       "partner": "Амения",
       "breedingStatus": "Готов к разведению"
     },
@@ -141,14 +141,7 @@
       "fatherId": null,
       "notes": "Родители неизвестны / недоступны"
     },
-    "offspringIds": [
-      "H007",
-      "H008",
-      "H009",
-      "H010",
-      "H011",
-      "H012"
-    ]
+    "offspringIds": []
   },
   {
     "id": "H002",
@@ -162,15 +155,15 @@
     "origin": "trader",
     "founderStatus": "founder",
     "line": "C",
-    "lineName": "Линия Их-Мори и Нандын",
+    "lineName": "Линия Нандын и Гола",
     "lineRole": "Основательница",
     "heightCm": 160,
     "weightKg": 585,
     "program": {
-      "lineFullName": "Линия Их-Мори и Нандын",
+      "lineFullName": "Линия Нандын и Гола",
       "role": "Основательница",
-      "direction": "Универсальная линия: сила + скорость",
-      "partner": "Их-Мори",
+      "direction": "Универсальная линия",
+      "partner": "Гол",
       "breedingStatus": "Не готова к разведению"
     },
     "traits": [
@@ -307,8 +300,8 @@
     "sexSymbol": "♀",
     "breed": "Помесь ахалтекинца",
     "coat": "Бледно-рыже-шампанская",
-    "status": "ready",
-    "statusText": "Готова к разведению",
+    "status": "not-ready",
+    "statusText": "Не готова к разведению",
     "origin": "trader",
     "founderStatus": "founder",
     "line": "A",
@@ -319,9 +312,9 @@
     "program": {
       "lineFullName": "Линия Хавара и Амении",
       "role": "Основательница",
-      "direction": "Завершённая основательская линия",
+      "direction": "Универсальная линия",
       "partner": "Хавар",
-      "breedingStatus": "Готова к разведению"
+      "breedingStatus": "Не готова к разведению"
     },
     "traits": [
       "Раздражительность от голода",
@@ -330,7 +323,7 @@
     "stats": [
       {
         "name": "Сила",
-        "current": 480,
+        "current": 330,
         "max": 480,
         "skills": [
           "Жилистость I"
@@ -338,25 +331,25 @@
       },
       {
         "name": "Координация",
-        "current": 790,
+        "current": 600,
         "max": 790,
         "skills": [
           "Резвость I",
-          "Твёрдый шаг II"
+          "Твёрдый шаг II*"
         ]
       },
       {
         "name": "Выносливость",
-        "current": 710,
+        "current": 460,
         "max": 710,
         "skills": [
           "Сопротивление холоду I",
-          "Крепкость костяка II"
+          "Крепкость костяка II*"
         ]
       },
       {
         "name": "Устойчивость",
-        "current": 480,
+        "current": 320,
         "max": 480,
         "skills": [
           "Уравновешенность I"
@@ -364,7 +357,7 @@
       },
       {
         "name": "Дух",
-        "current": 490,
+        "current": 330,
         "max": 490,
         "skills": [
           "Уверенность II"
@@ -443,14 +436,7 @@
       "fatherId": null,
       "notes": "Куплена у торговца; родители неизвестны / недоступны"
     },
-    "offspringIds": [
-      "H007",
-      "H008",
-      "H009",
-      "H010",
-      "H011",
-      "H012"
-    ]
+    "offspringIds": []
   },
   {
     "id": "H004",
@@ -463,16 +449,16 @@
     "statusText": "Не готов к разведению",
     "origin": "trader",
     "founderStatus": "founder",
-    "line": "C",
-    "lineName": "Линия Их-Мори и Нандын",
+    "line": "B",
+    "lineName": "Линия Их-Мори и Шоно",
     "lineRole": "Основатель",
     "heightCm": 153,
     "weightKg": 515,
     "program": {
-      "lineFullName": "Линия Их-Мори и Нандын",
+      "lineFullName": "Линия Их-Мори и Шоно",
       "role": "Основатель",
-      "direction": "Универсальная линия: сила + скорость",
-      "partner": "Нандын",
+      "direction": "Универсальная линия",
+      "partner": "Шоно",
       "breedingStatus": "Не готов к разведению"
     },
     "traits": [
@@ -614,15 +600,15 @@
     "origin": "trader",
     "founderStatus": "founder",
     "line": "B",
-    "lineName": "Линия Гола и Шоно",
+    "lineName": "Линия Их-Мори и Шоно",
     "lineRole": "Основательница",
     "heightCm": 167,
     "weightKg": 505,
     "program": {
-      "lineFullName": "Линия Гола и Шоно",
+      "lineFullName": "Линия Их-Мори и Шоно",
       "role": "Основательница",
-      "direction": "Снежно-горная линия",
-      "partner": "Гол",
+      "direction": "Универсальная линия",
+      "partner": "Их-Мори",
       "breedingStatus": "Не готова к разведению"
     },
     "traits": [
@@ -763,16 +749,16 @@
     "statusText": "Не готов к разведению",
     "origin": "trader",
     "founderStatus": "founder",
-    "line": "B",
-    "lineName": "Линия Гола и Шоно",
+    "line": "C",
+    "lineName": "Линия Нандын и Гола",
     "lineRole": "Основатель",
     "heightCm": 156,
     "weightKg": 457,
     "program": {
-      "lineFullName": "Линия Гола и Шоно",
+      "lineFullName": "Линия Нандын и Гола",
       "role": "Основатель",
-      "direction": "Снежно-горная линия",
-      "partner": "Шоно",
+      "direction": "Универсальная линия",
+      "partner": "Нандын",
       "breedingStatus": "Не готов к разведению"
     },
     "traits": [
@@ -902,880 +888,912 @@
     "offspringIds": []
   },
   {
-    "id": "H007",
-    "name": "Снег",
+    "id": "H013",
+    "name": "Арик-Бүке",
     "sex": "Жеребец",
     "sexSymbol": "♂",
     "breed": "Ферганская помесь",
-    "coat": "Янтарно-саврасая",
+    "coat": "Не указана",
     "status": "not-ready",
     "statusText": "Не готов к разведению",
-    "origin": "bred",
-    "founderStatus": "descendant",
-    "line": "A",
-    "lineName": "Линия Хавара и Амении",
-    "lineRole": "Потомок второго поколения",
-    "heightCm": 171,
-    "weightKg": 598,
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
     "program": {
-      "lineFullName": "Линия Хавара и Амении",
-      "role": "Снежный специалист",
-      "direction": "Снежные горы",
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Сила и устойчивость; слабая выносливость",
       "partner": "Не назначен",
       "breedingStatus": "Не готов к разведению"
     },
-    "traits": [
-      "Страсть к карьеру"
-    ],
+    "traits": [],
     "stats": [
       {
         "name": "Сила",
-        "current": 575,
-        "max": 595,
-        "skills": [
-          "Закалка I",
-          "Закалка II"
-        ]
+        "current": 478,
+        "max": 927,
+        "skills": []
       },
       {
         "name": "Координация",
-        "current": 582,
-        "max": 602,
-        "skills": [
-          "Твёрдый шаг I",
-          "Твёрдый шаг II"
-        ]
+        "current": 101,
+        "max": 370,
+        "skills": []
       },
       {
         "name": "Выносливость",
-        "current": 542,
-        "max": 562,
-        "skills": [
-          "Сопротивление холоду I",
-          "Сопротивление холоду II"
-        ]
+        "current": 132,
+        "max": 181,
+        "skills": []
       },
       {
         "name": "Устойчивость",
-        "current": 525,
-        "max": 545,
-        "skills": [
-          "Уравновешенность I",
-          "Уравновешенность II"
-        ]
+        "current": 359,
+        "max": 682,
+        "skills": []
       },
       {
         "name": "Дух",
-        "current": 445,
-        "max": 465,
-        "skills": [
-          "Твёрдый характер I"
-        ]
+        "current": 135,
+        "max": 388,
+        "skills": []
       }
     ],
-    "genetics": {
-      "phenotype": "Янтарно-саврасая",
-      "genes": [
-        {
-          "name": "E",
-          "value": "E/E"
-        },
-        {
-          "name": "A",
-          "value": "A/A"
-        },
-        {
-          "name": "D",
-          "value": "D/D"
-        },
-        {
-          "name": "Ch",
-          "value": "Ch/ch"
-        },
-        {
-          "name": "Cr",
-          "value": "Cr/cr"
-        },
-        {
-          "name": "Lp",
-          "value": "Lp/lp"
-        },
-        {
-          "name": "G",
-          "value": "G/g"
-        },
-        {
-          "name": "To",
-          "value": "To/to"
-        }
-      ]
-    },
-    "parameters": [
-      {
-        "name": "Поворотливость",
-        "value": "130 °/с"
-      },
-      {
-        "name": "Радиус поворота",
-        "value": "1,543 м"
-      },
-      {
-        "name": "Максимальная скорость",
-        "value": "37,264 км/ч"
-      },
-      {
-        "name": "Ускорение",
-        "value": "1,222"
-      },
-      {
-        "name": "Грузоподъёмность",
-        "value": "161,625 кг"
-      },
-      {
-        "name": "Дыхание",
-        "value": "120 очк."
-      },
-      {
-        "name": "Восстановление дыхания",
-        "value": "7,47 очк./с"
-      }
-    ],
+    "genetics": null,
+    "parameters": [],
     "pedigree": {
-      "motherId": "H003",
-      "fatherId": "H001",
-      "notes": "Рождён в экспериментальной серии Амения × Хавар"
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
     },
     "offspringIds": []
   },
   {
-    "id": "H008",
-    "name": "Ирвэс",
+    "id": "H014",
+    "name": "Борооны-Дусал",
     "sex": "Кобыла",
     "sexSymbol": "♀",
-    "breed": "Помесь ахалтекинца",
-    "coat": "Янтарно-саврасая",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
     "status": "not-ready",
     "statusText": "Не готова к разведению",
-    "origin": "bred",
-    "founderStatus": "descendant",
-    "line": "A",
-    "lineName": "Линия Хавара и Амении",
-    "lineRole": "Потомок второго поколения",
-    "heightCm": 163,
-    "weightKg": 554,
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
     "program": {
-      "lineFullName": "Линия Хавара и Амении",
-      "role": "Ключевая универсальная кобыла",
-      "direction": "Универсальная скоростная линия",
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Один из лучших универсальных кандидатов новой группы",
       "partner": "Не назначен",
       "breedingStatus": "Не готова к разведению"
     },
-    "traits": [
-      "Страсть к карьеру",
-      "Раздражительность от голода"
-    ],
+    "traits": [],
     "stats": [
       {
         "name": "Сила",
-        "current": 575,
-        "max": 595,
-        "skills": [
-          "Жилистость I",
-          "Жилистость II"
-        ]
+        "current": 450,
+        "max": 899,
+        "skills": []
       },
       {
         "name": "Координация",
-        "current": 582,
-        "max": 602,
-        "skills": [
-          "Резвость I",
-          "Резвость II"
-        ]
+        "current": 115,
+        "max": 430,
+        "skills": []
       },
       {
         "name": "Выносливость",
-        "current": 542,
-        "max": 562,
-        "skills": [
-          "Сопротивление холоду I",
-          "Сопротивление жаре II"
-        ]
+        "current": 135,
+        "max": 332,
+        "skills": []
       },
       {
         "name": "Устойчивость",
-        "current": 525,
-        "max": 545,
-        "skills": [
-          "Крепкие ноги I",
-          "Мускулатура II"
-        ]
+        "current": 272,
+        "max": 629,
+        "skills": []
       },
       {
         "name": "Дух",
-        "current": 445,
-        "max": 465,
-        "skills": [
-          "Уверенность II"
-        ]
+        "current": 144,
+        "max": 399,
+        "skills": []
       }
     ],
-    "genetics": {
-      "phenotype": "Янтарно-саврасая",
-      "genes": [
-        {
-          "name": "E",
-          "value": "E/E"
-        },
-        {
-          "name": "A",
-          "value": "A/A"
-        },
-        {
-          "name": "D",
-          "value": "D/D"
-        },
-        {
-          "name": "Ch",
-          "value": "Ch/ch"
-        },
-        {
-          "name": "Cr",
-          "value": "Cr/cr"
-        },
-        {
-          "name": "Lp",
-          "value": "Lp/lp"
-        },
-        {
-          "name": "G",
-          "value": "G/g"
-        },
-        {
-          "name": "To",
-          "value": "To/to"
-        }
-      ]
-    },
-    "parameters": [
-      {
-        "name": "Поворотливость",
-        "value": "130 °/с"
-      },
-      {
-        "name": "Радиус поворота",
-        "value": "1,543 м"
-      },
-      {
-        "name": "Максимальная скорость",
-        "value": "39,869 км/ч"
-      },
-      {
-        "name": "Ускорение",
-        "value": "1,222"
-      },
-      {
-        "name": "Грузоподъёмность",
-        "value": "161,625 кг"
-      },
-      {
-        "name": "Дыхание",
-        "value": "120 очк."
-      },
-      {
-        "name": "Восстановление дыхания",
-        "value": "6,27 очк./с"
-      }
-    ],
+    "genetics": null,
+    "parameters": [],
     "pedigree": {
-      "motherId": "H003",
-      "fatherId": "H001",
-      "notes": "Рождена в экспериментальной серии Амения × Хавар"
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
     },
     "offspringIds": []
   },
   {
-    "id": "H009",
-    "name": "Пустыня",
+    "id": "H015",
+    "name": "Ганга",
     "sex": "Кобыла",
     "sexSymbol": "♀",
-    "breed": "Помесь ахалтекинца",
-    "coat": "Янтарно-саврасая",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
     "status": "not-ready",
     "statusText": "Не готова к разведению",
-    "origin": "bred",
-    "founderStatus": "descendant",
-    "line": "A",
-    "lineName": "Линия Хавара и Амении",
-    "lineRole": "Потомок второго поколения",
-    "heightCm": 156,
-    "weightKg": 622,
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
     "program": {
-      "lineFullName": "Линия Хавара и Амении",
-      "role": "Пустынный специалист",
-      "direction": "Пустыня",
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Донор духа и устойчивости",
       "partner": "Не назначен",
       "breedingStatus": "Не готова к разведению"
     },
-    "traits": [
-      "Ночной образ жизни"
-    ],
+    "traits": [],
     "stats": [
       {
         "name": "Сила",
-        "current": 575,
-        "max": 595,
-        "skills": [
-          "Железность I",
-          "Выдержка II"
-        ]
+        "current": 331,
+        "max": 765,
+        "skills": []
       },
       {
         "name": "Координация",
-        "current": 582,
-        "max": 602,
-        "skills": [
-          "Твёрдый шаг I",
-          "Твёрдый шаг II"
-        ]
+        "current": 141,
+        "max": 226,
+        "skills": []
       },
       {
         "name": "Выносливость",
-        "current": 542,
-        "max": 562,
-        "skills": [
-          "Сопротивление жаре I",
-          "Сопротивление жаре II"
-        ]
+        "current": 117,
+        "max": 210,
+        "skills": []
       },
       {
         "name": "Устойчивость",
-        "current": 525,
-        "max": 545,
-        "skills": [
-          "Уравновешенность I",
-          "Крепкие ноги II"
-        ]
+        "current": 273,
+        "max": 680,
+        "skills": []
       },
       {
         "name": "Дух",
-        "current": 445,
-        "max": 465,
-        "skills": [
-          "Твёрдый характер I"
-        ]
+        "current": 148,
+        "max": 432,
+        "skills": []
       }
     ],
-    "genetics": {
-      "phenotype": "Янтарно-саврасая",
-      "genes": [
-        {
-          "name": "E",
-          "value": "E/E"
-        },
-        {
-          "name": "A",
-          "value": "A/a"
-        },
-        {
-          "name": "D",
-          "value": "D/D"
-        },
-        {
-          "name": "Ch",
-          "value": "Ch/Ch"
-        },
-        {
-          "name": "Cr",
-          "value": "Cr/cr"
-        },
-        {
-          "name": "Lp",
-          "value": "Lp/lp"
-        },
-        {
-          "name": "G",
-          "value": "G/g"
-        },
-        {
-          "name": "To",
-          "value": "To/to"
-        }
-      ]
-    },
-    "parameters": [
-      {
-        "name": "Поворотливость",
-        "value": "130 °/с"
-      },
-      {
-        "name": "Радиус поворота",
-        "value": "1,543 м"
-      },
-      {
-        "name": "Максимальная скорость",
-        "value": "37,264 км/ч"
-      },
-      {
-        "name": "Ускорение",
-        "value": "1,222"
-      },
-      {
-        "name": "Грузоподъёмность",
-        "value": "161,625 кг"
-      },
-      {
-        "name": "Дыхание",
-        "value": "120 очк."
-      },
-      {
-        "name": "Восстановление дыхания",
-        "value": "7,47 очк./с"
-      }
-    ],
+    "genetics": null,
+    "parameters": [],
     "pedigree": {
-      "motherId": "H003",
-      "fatherId": "H001",
-      "notes": "Рождена в экспериментальной серии Амения × Хавар"
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
     },
     "offspringIds": []
   },
   {
-    "id": "H010",
-    "name": "Пустыня",
+    "id": "H016",
+    "name": "Гэрэлээ",
     "sex": "Жеребец",
     "sexSymbol": "♂",
-    "breed": "Помесь ахалтекинца",
-    "coat": "Бледно-рыже-шампанская",
+    "breed": "Бретонская помесь",
+    "coat": "Не указана",
     "status": "not-ready",
     "statusText": "Не готов к разведению",
-    "origin": "bred",
-    "founderStatus": "descendant",
-    "line": "A",
-    "lineName": "Линия Хавара и Амении",
-    "lineRole": "Потомок второго поколения",
-    "heightCm": 163,
-    "weightKg": 750,
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
     "program": {
-      "lineFullName": "Линия Хавара и Амении",
-      "role": "Пустынный специалист",
-      "direction": "Пустыня",
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Специалист по выносливости; рекорд новой группы",
       "partner": "Не назначен",
       "breedingStatus": "Не готов к разведению"
     },
-    "traits": [
-      "Страсть к карьеру"
-    ],
+    "traits": [],
     "stats": [
       {
         "name": "Сила",
-        "current": 575,
-        "max": 595,
-        "skills": [
-          "Железность I",
-          "Закалка II"
-        ]
+        "current": 656,
+        "max": 776,
+        "skills": []
       },
       {
         "name": "Координация",
-        "current": 582,
-        "max": 602,
-        "skills": [
-          "Твёрдый шаг I",
-          "Легконогость II"
-        ]
+        "current": 145,
+        "max": 184,
+        "skills": []
       },
       {
         "name": "Выносливость",
-        "current": 542,
-        "max": 562,
-        "skills": [
-          "Сопротивление жаре I",
-          "Сопротивление жаре II"
-        ]
+        "current": 338,
+        "max": 736,
+        "skills": []
       },
       {
         "name": "Устойчивость",
-        "current": 525,
-        "max": 545,
-        "skills": [
-          "Уравновешенность I",
-          "Уравновешенность II"
-        ]
+        "current": 109,
+        "max": 195,
+        "skills": []
       },
       {
         "name": "Дух",
-        "current": 445,
-        "max": 465,
-        "skills": [
-          "Твёрдый характер I"
-        ]
+        "current": 139,
+        "max": 364,
+        "skills": []
       }
     ],
-    "genetics": {
-      "phenotype": "Бледно-рыже-шампанская",
-      "genes": [
-        {
-          "name": "E",
-          "value": "E/e"
-        },
-        {
-          "name": "A",
-          "value": "A/A"
-        },
-        {
-          "name": "D",
-          "value": "D/D"
-        },
-        {
-          "name": "Ch",
-          "value": "Ch/Ch"
-        },
-        {
-          "name": "Cr",
-          "value": "Cr/Cr"
-        },
-        {
-          "name": "Lp",
-          "value": "Lp/Lp"
-        },
-        {
-          "name": "G",
-          "value": "G/g"
-        },
-        {
-          "name": "To",
-          "value": "To/To"
-        }
-      ]
-    },
-    "parameters": [
-      {
-        "name": "Поворотливость",
-        "value": "130 °/с"
-      },
-      {
-        "name": "Радиус поворота",
-        "value": "1,543 м"
-      },
-      {
-        "name": "Максимальная скорость",
-        "value": "37,264 км/ч"
-      },
-      {
-        "name": "Ускорение",
-        "value": "1,029"
-      },
-      {
-        "name": "Грузоподъёмность",
-        "value": "161,625 кг"
-      },
-      {
-        "name": "Дыхание",
-        "value": "120 очк."
-      },
-      {
-        "name": "Восстановление дыхания",
-        "value": "7,47 очк./с"
-      }
-    ],
+    "genetics": null,
+    "parameters": [],
     "pedigree": {
-      "motherId": "H003",
-      "fatherId": "H001",
-      "notes": "Рождён в экспериментальной серии Амения × Хавар"
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
     },
     "offspringIds": []
   },
   {
-    "id": "H011",
-    "name": "Снег",
+    "id": "H017",
+    "name": "Дух",
     "sex": "Кобыла",
     "sexSymbol": "♀",
-    "breed": "Помесь ахалтекинца",
-    "coat": "Бледно-рыже-шампанская",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
     "status": "not-ready",
     "statusText": "Не готова к разведению",
-    "origin": "bred",
-    "founderStatus": "descendant",
-    "line": "A",
-    "lineName": "Линия Хавара и Амении",
-    "lineRole": "Потомок второго поколения",
-    "heightCm": 159,
-    "weightKg": 578,
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
     "program": {
-      "lineFullName": "Линия Хавара и Амении",
-      "role": "Снежный специалист",
-      "direction": "Снежные горы",
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Ровная резервная кобыла",
       "partner": "Не назначен",
       "breedingStatus": "Не готова к разведению"
     },
-    "traits": [
-      "Страсть к карьеру",
-      "Раздражительность от голода"
-    ],
+    "traits": [],
     "stats": [
       {
         "name": "Сила",
-        "current": 575,
-        "max": 595,
-        "skills": [
-          "Закалка I",
-          "Жилистость II"
-        ]
+        "current": 645,
+        "max": 798,
+        "skills": []
       },
       {
         "name": "Координация",
-        "current": 582,
-        "max": 602,
-        "skills": [
-          "Твёрдый шаг I",
-          "Легконогость II"
-        ]
+        "current": 149,
+        "max": 278,
+        "skills": []
       },
       {
         "name": "Выносливость",
-        "current": 542,
-        "max": 562,
-        "skills": [
-          "Сопротивление холоду I",
-          "Сопротивление холоду II"
-        ]
+        "current": 111,
+        "max": 321,
+        "skills": []
       },
       {
         "name": "Устойчивость",
-        "current": 525,
-        "max": 545,
-        "skills": [
-          "Уравновешенность I",
-          "Крепкие ноги II"
-        ]
+        "current": 267,
+        "max": 672,
+        "skills": []
       },
       {
         "name": "Дух",
-        "current": 445,
-        "max": 465,
-        "skills": [
-          "Твёрдый характер I"
-        ]
+        "current": 133,
+        "max": 277,
+        "skills": []
       }
     ],
-    "genetics": {
-      "phenotype": "Бледно-рыже-шампанская",
-      "genes": [
-        {
-          "name": "E",
-          "value": "E/E"
-        },
-        {
-          "name": "A",
-          "value": "A/A"
-        },
-        {
-          "name": "D",
-          "value": "D/D"
-        },
-        {
-          "name": "Ch",
-          "value": "Ch/ch"
-        },
-        {
-          "name": "Cr",
-          "value": "Cr/Cr"
-        },
-        {
-          "name": "Lp",
-          "value": "Lp/lp"
-        },
-        {
-          "name": "G",
-          "value": "G/G"
-        },
-        {
-          "name": "To",
-          "value": "To/to"
-        }
-      ]
-    },
-    "parameters": [
-      {
-        "name": "Поворотливость",
-        "value": "130 °/с"
-      },
-      {
-        "name": "Радиус поворота",
-        "value": "1,543 м"
-      },
-      {
-        "name": "Максимальная скорость",
-        "value": "37,264 км/ч"
-      },
-      {
-        "name": "Ускорение",
-        "value": "1,029"
-      },
-      {
-        "name": "Грузоподъёмность",
-        "value": "161,625 кг"
-      },
-      {
-        "name": "Дыхание",
-        "value": "120 очк."
-      },
-      {
-        "name": "Восстановление дыхания",
-        "value": "7,47 очк./с"
-      }
-    ],
+    "genetics": null,
+    "parameters": [],
     "pedigree": {
-      "motherId": "H003",
-      "fatherId": "H001",
-      "notes": "Рождена в экспериментальной серии Амения × Хавар"
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
     },
     "offspringIds": []
   },
   {
-    "id": "H012",
-    "name": "Цагаан Салхи",
+    "id": "H018",
+    "name": "Ихтэн",
     "sex": "Жеребец",
     "sexSymbol": "♂",
-    "breed": "Помесь ахалтекинца",
-    "coat": "Янтарно-саврасая",
+    "breed": "Ферганская",
+    "coat": "Не указана",
     "status": "not-ready",
     "statusText": "Не готов к разведению",
-    "origin": "bred",
-    "founderStatus": "descendant",
-    "line": "A",
-    "lineName": "Линия Хавара и Амении",
-    "lineRole": "Потомок второго поколения",
-    "heightCm": 163,
-    "weightKg": 663,
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
     "program": {
-      "lineFullName": "Линия Хавара и Амении",
-      "role": "Ключевой универсальный жеребец",
-      "direction": "Универсальная скоростная линия",
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Выносливость и чистая ферганская порода",
       "partner": "Не назначен",
       "breedingStatus": "Не готов к разведению"
     },
-    "traits": [
-      "Раздражительность от голода"
-    ],
+    "traits": [],
     "stats": [
       {
         "name": "Сила",
-        "current": 575,
-        "max": 595,
-        "skills": [
-          "Жилистость I",
-          "Выдержка II"
-        ]
+        "current": 311,
+        "max": 739,
+        "skills": []
       },
       {
         "name": "Координация",
-        "current": 582,
-        "max": 602,
-        "skills": [
-          "Резвость I",
-          "Резвость II"
-        ]
+        "current": 113,
+        "max": 200,
+        "skills": []
       },
       {
         "name": "Выносливость",
-        "current": 542,
-        "max": 562,
-        "skills": [
-          "Сопротивление жаре I",
-          "Сопротивление холоду II"
-        ]
+        "current": 131,
+        "max": 445,
+        "skills": []
       },
       {
         "name": "Устойчивость",
-        "current": 525,
-        "max": 545,
-        "skills": [
-          "Уравновешенность I",
-          "Крепкие ноги II"
-        ]
+        "current": 491,
+        "max": 602,
+        "skills": []
       },
       {
         "name": "Дух",
-        "current": 445,
-        "max": 465,
-        "skills": [
-          "Твёрдый характер I"
-        ]
+        "current": 141,
+        "max": 277,
+        "skills": []
       }
     ],
-    "genetics": {
-      "phenotype": "Янтарно-саврасая",
-      "genes": [
-        {
-          "name": "E",
-          "value": "E/E"
-        },
-        {
-          "name": "A",
-          "value": "A/A"
-        },
-        {
-          "name": "D",
-          "value": "D/D"
-        },
-        {
-          "name": "Ch",
-          "value": "Ch/ch"
-        },
-        {
-          "name": "Cr",
-          "value": "Cr/cr"
-        },
-        {
-          "name": "Lp",
-          "value": "Lp/Lp"
-        },
-        {
-          "name": "G",
-          "value": "G/G"
-        },
-        {
-          "name": "To",
-          "value": "To/to"
-        }
-      ]
-    },
-    "parameters": [
-      {
-        "name": "Поворотливость",
-        "value": "130 °/с"
-      },
-      {
-        "name": "Радиус поворота",
-        "value": "1,543 м"
-      },
-      {
-        "name": "Максимальная скорость",
-        "value": "39,869 км/ч"
-      },
-      {
-        "name": "Ускорение",
-        "value": "1,222"
-      },
-      {
-        "name": "Грузоподъёмность",
-        "value": "161,625 кг"
-      },
-      {
-        "name": "Дыхание",
-        "value": "120 очк."
-      },
-      {
-        "name": "Восстановление дыхания",
-        "value": "7,47 очк./с"
-      }
-    ],
+    "genetics": null,
+    "parameters": [],
     "pedigree": {
-      "motherId": "H003",
-      "fatherId": "H001",
-      "notes": "Рождён в экспериментальной серии Амения × Хавар"
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H019",
+    "name": "Орхон",
+    "sex": "Жеребец",
+    "sexSymbol": "♂",
+    "breed": "Бретонская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готов к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Предварительный кандидат на выбраковку",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готов к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 452,
+        "max": 602,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 106,
+        "max": 204,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 366,
+        "max": 435,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 146,
+        "max": 176,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 126,
+        "max": 270,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H020",
+    "name": "Салхин-Дуу",
+    "sex": "Кобыла",
+    "sexSymbol": "♀",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готова к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Сила и координация; племенной резерв",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готова к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 667,
+        "max": 835,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 140,
+        "max": 328,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 103,
+        "max": 229,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 393,
+        "max": 607,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 129,
+        "max": 279,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H021",
+    "name": "Усан",
+    "sex": "Жеребец",
+    "sexSymbol": "♂",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готов к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Лучший универсальный жеребец новой группы",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готов к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 546,
+        "max": 752,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 136,
+        "max": 437,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 149,
+        "max": 375,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 491,
+        "max": 749,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 104,
+        "max": 376,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H022",
+    "name": "Хавар",
+    "sex": "Кобыла",
+    "sexSymbol": "♀",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готова к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Донор силы и устойчивости; не путать с H001",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готова к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 431,
+        "max": 978,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 100,
+        "max": 322,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 127,
+        "max": 212,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 282,
+        "max": 732,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 117,
+        "max": 244,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H023",
+    "name": "Цэцэг",
+    "sex": "Жеребец",
+    "sexSymbol": "♂",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готов к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Донор силы и духа; рекорд силы новой группы",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готов к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 641,
+        "max": 995,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 121,
+        "max": 165,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 141,
+        "max": 427,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 390,
+        "max": 513,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 119,
+        "max": 419,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H024",
+    "name": "Эзэн",
+    "sex": "Жеребец",
+    "sexSymbol": "♂",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готов к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Силовой племенной кандидат",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готов к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 382,
+        "max": 994,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 111,
+        "max": 371,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 112,
+        "max": 357,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 260,
+        "max": 652,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 138,
+        "max": 230,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H025",
+    "name": "Эрдэнэ",
+    "sex": "Жеребец",
+    "sexSymbol": "♂",
+    "breed": "Ферганская помесь",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готов к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Устойчивость и дух; племенной резерв",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готов к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 547,
+        "max": 802,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 107,
+        "max": 209,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 131,
+        "max": 255,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 307,
+        "max": 693,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 102,
+        "max": 396,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
+    },
+    "offspringIds": []
+  },
+  {
+    "id": "H026",
+    "name": "Эрс",
+    "sex": "Жеребец",
+    "sexSymbol": "♂",
+    "breed": "Ферганская",
+    "coat": "Не указана",
+    "status": "not-ready",
+    "statusText": "Не готов к разведению",
+    "origin": "wild",
+    "founderStatus": null,
+    "line": null,
+    "lineName": "Линия не назначена",
+    "lineRole": "Кандидат племенного резерва",
+    "heightCm": 0,
+    "weightKg": 0,
+    "program": {
+      "lineFullName": "Линия не назначена",
+      "role": "Кандидат племенного резерва",
+      "direction": "Резерв; окончательная оценка после полной карточки",
+      "partner": "Не назначен",
+      "breedingStatus": "Не готов к разведению"
+    },
+    "traits": [],
+    "stats": [
+      {
+        "name": "Сила",
+        "current": 561,
+        "max": 732,
+        "skills": []
+      },
+      {
+        "name": "Координация",
+        "current": 145,
+        "max": 242,
+        "skills": []
+      },
+      {
+        "name": "Выносливость",
+        "current": 148,
+        "max": 383,
+        "skills": []
+      },
+      {
+        "name": "Устойчивость",
+        "current": 372,
+        "max": 503,
+        "skills": []
+      },
+      {
+        "name": "Дух",
+        "current": 139,
+        "max": 259,
+        "skills": []
+      }
+    ],
+    "genetics": null,
+    "parameters": [],
+    "pedigree": {
+      "motherId": null,
+      "fatherId": null,
+      "notes": "Приручена в дикой природе во время экспедиции в снежные горы; родители неизвестны."
     },
     "offspringIds": []
   }
